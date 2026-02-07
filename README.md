@@ -6,7 +6,7 @@ A showcase website demonstrating the NationalCitizen platform vision for Andhra 
 
 ## 🚀 Live Demo
 
-**[View Live Demo →](https://YOUR_USERNAME.github.io/nationalcitizen-demo/)**
+**[View Live Demo →](https://dharmatejakarri.github.io/nationalcitizen-demo/)**
 
 ## 📱 Pages
 
@@ -29,7 +29,7 @@ A showcase website demonstrating the NationalCitizen platform vision for Andhra 
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/nationalcitizen-demo.git
+git clone https://github.com/dharmatejakarri/nationalcitizen-demo.git
 
 # Navigate to folder
 cd nationalcitizen-demo
