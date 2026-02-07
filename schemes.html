@@ -512,33 +512,92 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="page-header">
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="header-brand">
-                    <i class="fas fa-fingerprint"></i>
-                    NationalCitizen
-                </a>
-                <nav class="header-nav">
-                    <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
-                    <a href="schemes.html" style="color: var(--ap-orange);"><i class="fas fa-search"></i> Schemes</a>
-                    <a href="dashboard.html"><i class="fas fa-file-alt"></i> Applications</a>
-                    <a href="dashboard.html" class="btn btn-primary" style="padding: 10px 20px;"><i
-                            class="fas fa-user"></i> Dharma T.</a>
-                </nav>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-fingerprint"></i>
+                NationalCitizen
             </div>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <div class="page-wrapper">
-        <div class="container">
-            <!-- Heading -->
-            <div style="margin-bottom: 24px;">
-                <h1 style="margin-bottom: 8px;">Discover Government Schemes</h1>
-                <p class="text-muted" style="margin: 0;">Find and apply to schemes you're eligible for based on your
-                    profile</p>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html">
+                        <i class="fas fa-home"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="schemes.html" class="active">
+                        <i class="fas fa-search"></i>
+                        Discover Schemes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="applications.html">
+                        <i class="fas fa-file-alt"></i>
+                        My Applications
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="vault.html">
+                        <i class="fas fa-folder-open"></i>
+                        Document Vault
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="mentors.html">
+                        <i class="fas fa-users"></i>
+                        Find Mentors
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="notifications.html">
+                        <i class="fas fa-bell"></i>
+                        Notifications
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="index.html"
+                    style="display: block; margin-bottom: 16px; color: rgba(255,255,255,0.6); font-size: 14px;">
+                    <i class="fas fa-arrow-left"></i> Back to Showcase
+                </a>
+                <div class="user-card">
+                    <div class="user-avatar">DT</div>
+                    <div class="user-info">
+                        <h5>Dharma Teja</h5>
+                        <p>Young Professional • 26 yrs</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <div class="topbar">
+                <div>
+                    <h1>Discover Schemes</h1>
+                    <p class="text-muted" style="margin: 0;">Personalized government benefits matched to your profile
+                    </p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="notification-btn" onclick="window.location.href='notifications.html'">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <a href="applications.html" class="btn btn-secondary">
+                        <i class="fas fa-file-alt"></i>
+                        Applications
+                    </a>
+                </div>
             </div>
 
             <!-- Filters -->
@@ -947,15 +1006,15 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
 
-        <!-- Load More -->
-        <div class="text-center mt-8" style="padding-bottom: 80px; text-align: center; margin-top: 40px;">
-            <button class="btn btn-secondary btn-lg"
-                onclick="alert('Demo Mode: Loading more schemes is disabled. Currently showing top 8 matches for your profile.')">
-                <i class="fas fa-plus"></i> Load More Schemes (41 remaining)
-            </button>
-        </div>
+    <!-- Load More -->
+    <div class="text-center mt-8" style="padding-bottom: 80px; text-align: center; margin-top: 40px;">
+        <button class="btn btn-secondary btn-lg"
+            onclick="alert('Demo Mode: Loading more schemes is disabled. Currently showing top 8 matches for your profile.')">
+            <i class="fas fa-plus"></i> Load More Schemes (41 remaining)
+        </button>
+    </div>
     </div>
     </div>
 
@@ -1012,80 +1071,80 @@
                 <button class="btn btn-primary" onclick="startApplication()"><i class="fas fa-paper-plane"></i> Start
                     Application</button>
             </div>
+            </main>
         </div>
-    </div>
 
-    <!-- Demo Banner -->
-    <div class="demo-banner">
-        <p><strong>🎯 DEMO MODE:</strong> Explore the scheme discovery experience. Data shown is for demonstration
-            purposes.</p>
-        <a href="index.html" class="btn btn-accent" style="padding: 10px 20px; font-size: 13px;">
-            <i class="fas fa-arrow-left"></i> Back to Showcase
-        </a>
-    </div>
+        <!-- Demo Banner -->
+        <div class="demo-banner">
+            <p><strong>🎯 DEMO MODE:</strong> Explore the scheme discovery experience. Data shown is for demonstration
+                purposes.</p>
+            <a href="index.html" class="btn btn-accent" style="padding: 10px 20px; font-size: 13px;">
+                <i class="fas fa-arrow-left"></i> Back to Showcase
+            </a>
+        </div>
 
-    <script>
-        // Modal logic
-        function openModal() {
-            document.getElementById('schemeModal').classList.add('active');
-        }
+        <script>
+            // Modal logic
+            function openModal() {
+                document.getElementById('schemeModal').classList.add('active');
+            }
 
-        function closeModal() {
-            document.getElementById('schemeModal').classList.remove('active');
-        }
+            function closeModal() {
+                document.getElementById('schemeModal').classList.remove('active');
+            }
 
-        function startApplication() {
-            alert('Application started! Your data has been pre-filled from your profile vault.');
-            closeModal();
-        }
-
-        // Search and Filter Logic
-        const searchInput = document.getElementById('searchInput');
-        const filterTags = document.querySelectorAll('.filter-tag');
-        const schemeCards = document.querySelectorAll('.scheme-card');
-        let activeCategory = 'All';
-
-        function filterSchemes() {
-            const searchTerm = searchInput.value.toLowerCase();
-            let count = 0;
-
-            schemeCards.forEach(card => {
-                const title = card.querySelector('.scheme-card-title').textContent.toLowerCase();
-                const ministry = card.querySelector('.scheme-card-ministry').textContent.toLowerCase();
-                const category = card.getAttribute('data-category');
-
-                const matchesSearch = title.includes(searchTerm) || ministry.includes(searchTerm);
-                const matchesCategory = activeCategory === 'All' || category === activeCategory;
-
-                if (matchesSearch && matchesCategory) {
-                    card.style.display = 'block';
-                    count++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            document.querySelector('.results-count').innerHTML = `Showing <strong>${count} schemes</strong> matching your profile`;
-        }
-
-        searchInput.addEventListener('input', filterSchemes);
-
-        filterTags.forEach(tag => {
-            tag.addEventListener('click', () => {
-                filterTags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-                activeCategory = tag.textContent;
-                filterSchemes();
-            });
-        });
-
-        // Close modal on overlay click
-        document.getElementById('schemeModal').addEventListener('click', (e) => {
-            if (e.target.classList.contains('modal-overlay')) {
+            function startApplication() {
+                alert('Application started! Your data has been pre-filled from your profile vault.');
                 closeModal();
             }
-        });
-    </script>
+
+            // Search and Filter Logic
+            const searchInput = document.getElementById('searchInput');
+            const filterTags = document.querySelectorAll('.filter-tag');
+            const schemeCards = document.querySelectorAll('.scheme-card');
+            let activeCategory = 'All';
+
+            function filterSchemes() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let count = 0;
+
+                schemeCards.forEach(card => {
+                    const title = card.querySelector('.scheme-card-title').textContent.toLowerCase();
+                    const ministry = card.querySelector('.scheme-card-ministry').textContent.toLowerCase();
+                    const category = card.getAttribute('data-category');
+
+                    const matchesSearch = title.includes(searchTerm) || ministry.includes(searchTerm);
+                    const matchesCategory = activeCategory === 'All' || category === activeCategory;
+
+                    if (matchesSearch && matchesCategory) {
+                        card.style.display = 'block';
+                        count++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                document.querySelector('.results-count').innerHTML = `Showing <strong>${count} schemes</strong> matching your profile`;
+            }
+
+            searchInput.addEventListener('input', filterSchemes);
+
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    activeCategory = tag.textContent;
+                    filterSchemes();
+                });
+            });
+
+            // Close modal on overlay click
+            document.getElementById('schemeModal').addEventListener('click', (e) => {
+                if (e.target.classList.contains('modal-overlay')) {
+                    closeModal();
+                }
+            });
+        </script>
 </body>
 
 </html>

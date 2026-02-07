@@ -721,31 +721,31 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="schemes.html">
+                    <a href="applications.html">
                         <i class="fas fa-file-alt"></i>
                         My Applications
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" onclick="alert('Document Vault demo is coming soon!')">
+                    <a href="vault.html">
                         <i class="fas fa-folder-open"></i>
                         Document Vault
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" onclick="alert('Mentors matching demo is coming soon!')">
+                    <a href="mentors.html">
                         <i class="fas fa-users"></i>
                         Find Mentors
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" onclick="alert('Notifications Center demo is coming soon!')">
+                    <a href="notifications.html">
                         <i class="fas fa-bell"></i>
                         Notifications
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" onclick="alert('Settings demo is coming soon!')">
+                    <a href="settings.html">
                         <i class="fas fa-cog"></i>
                         Settings
                     </a>
@@ -1035,7 +1035,8 @@
                             <h3><i class="fas fa-bell text-orange"></i> Recent Notifications</h3>
                         </div>
                         <div class="dashboard-card-body" style="padding: 16px;">
-                            <div class="notification-item">
+                            <div class="notification-item" style="cursor: pointer;"
+                                onclick="window.location.href='notifications.html'">
                                 <div class="notification-icon deadline">
                                     <i class="fas fa-exclamation-triangle"></i>
                                 </div>
@@ -1046,7 +1047,8 @@
                                 </div>
                             </div>
 
-                            <div class="notification-item">
+                            <div class="notification-item" style="cursor: pointer;"
+                                onclick="window.location.href='vault.html'">
                                 <div class="notification-icon success">
                                     <i class="fas fa-check-circle"></i>
                                 </div>
@@ -1057,7 +1059,8 @@
                                 </div>
                             </div>
 
-                            <div class="notification-item">
+                            <div class="notification-item" style="cursor: pointer;"
+                                onclick="window.location.href='mentors.html'">
                                 <div class="notification-icon info">
                                     <i class="fas fa-comment-dots"></i>
                                 </div>
@@ -1068,7 +1071,8 @@
                                 </div>
                             </div>
 
-                            <div class="notification-item">
+                            <div class="notification-item" style="cursor: pointer;"
+                                onclick="window.location.href='applications.html'">
                                 <div class="notification-icon success">
                                     <i class="fas fa-check-circle"></i>
                                 </div>
@@ -1079,7 +1083,8 @@
                                 </div>
                             </div>
 
-                            <div class="notification-item">
+                            <div class="notification-item" style="cursor: pointer;"
+                                onclick="window.location.href='schemes.html'">
                                 <div class="notification-icon info">
                                     <i class="fas fa-sparkles"></i>
                                 </div>
@@ -1118,23 +1123,22 @@
                         </div>
                     </div>
 
-                    <!-- Quick Actions -->
                     <div class="dashboard-card mt-6">
                         <div class="dashboard-card-header">
                             <h3><i class="fas fa-bolt text-gold"></i> Quick Actions</h3>
                         </div>
                         <div class="dashboard-card-body" style="display: grid; gap: 12px;">
                             <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;"
-                                onclick="alert('Profile Update: Your bio-records are up to date via NationalCitizen Hub.')">
+                                onclick="window.location.href='settings.html'">
                                 <i class="fas fa-id-card"></i> Update Profile Details
                             </button>
                             <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;"
-                                onclick="alert('Document Vault: 12 documents are securely stored. Open Vault?')">
+                                onclick="window.location.href='vault.html'">
                                 <i class="fas fa-upload"></i> Manage Documents
                             </button>
                             <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;"
-                                onclick="alert('Calculator: Based on current trends, your estimated pension is ₹3,200/mo.')">
-                                <i class="fas fa-calculator"></i> Pension Estimator
+                                onclick="window.location.href='mentors.html'">
+                                <i class="fas fa-users"></i> Find Mentors
                             </button>
                         </div>
                     </div>

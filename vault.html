@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Vault | NationalCitizen</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .document-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray);
+            transition: all 0.3s ease;
+        }
+
+        .document-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--ap-navy);
+        }
+
+        .document-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .doc-identity {
+            background: rgba(29, 48, 127, 0.1);
+            color: var(--ap-navy);
+        }
+
+        .doc-education {
+            background: rgba(255, 69, 0, 0.1);
+            color: var(--ap-orange);
+        }
+
+        .doc-finance {
+            background: rgba(3, 109, 51, 0.1);
+            color: var(--ap-green);
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            background: rgba(3, 109, 51, 0.1);
+            color: var(--ap-green);
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .vault-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .vault-stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .vault-stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .upload-zone {
+            border: 2px dashed var(--gray);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            background: white;
+            margin-bottom: 32px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--ap-navy);
+            background: rgba(29, 48, 127, 0.02);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-fingerprint"></i>
+                NationalCitizen
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html">
+                        <i class="fas fa-home"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="schemes.html">
+                        <i class="fas fa-search"></i>
+                        Discover Schemes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="applications.html">
+                        <i class="fas fa-file-alt"></i>
+                        My Applications
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="vault.html" class="active">
+                        <i class="fas fa-folder-open"></i>
+                        Document Vault
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="mentors.html">
+                        <i class="fas fa-users"></i>
+                        Find Mentors
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="notifications.html">
+                        <i class="fas fa-bell"></i>
+                        Notifications
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html">
+                        <i class="fas fa-cog"></i>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="index.html"
+                    style="display: block; margin-bottom: 16px; color: rgba(255,255,255,0.6); font-size: 14px;">
+                    <i class="fas fa-arrow-left"></i> Back to Showcase
+                </a>
+                <div class="user-card">
+                    <div class="user-avatar">DT</div>
+                    <div class="user-info">
+                        <h5>Dharma Teja</h5>
+                        <p>Young Professional • 26 yrs</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <div class="topbar">
+                <div>
+                    <h1>Document Vault</h1>
+                    <p class="text-muted" style="margin: 0;">Your secure, government-verified digital document locker
+                    </p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn btn-primary"
+                        onclick="alert('Scan QR: Use your phone camera to secure-upload documents instantly.')">
+                        <i class="fas fa-qrcode"></i> Scan to Upload
+                    </button>
+                </div>
+            </div>
+
+            <!-- Vault Stats -->
+            <div class="vault-stats">
+                <div class="vault-stat-card">
+                    <div class="vault-stat-value">12</div>
+                    <div class="text-muted" style="font-size: 13px;">Stored Documents</div>
+                </div>
+                <div class="vault-stat-card">
+                    <div class="vault-stat-value" style="color: var(--ap-green);">10</div>
+                    <div class="text-muted" style="font-size: 13px;">Verified Items</div>
+                </div>
+                <div class="vault-stat-card">
+                    <div class="vault-stat-value" style="color: var(--ap-orange);">1.2 GB</div>
+                    <div class="text-muted" style="font-size: 13px;">Encrypted Storage</div>
+                </div>
+            </div>
+
+            <!-- Upload Zone -->
+            <div class="upload-zone"
+                onclick="alert('Select File: Choose a document from your device to upload to NationalCitizen Cloud.')">
+                <i class="fas fa-cloud-upload-alt"
+                    style="font-size: 40px; color: var(--ap-navy); margin-bottom: 16px;"></i>
+                <h3>Click or drag documents here to upload</h3>
+                <p class="text-muted">Supports PDF, JPEG, PNG (Max 10MB per file)</p>
+            </div>
+
+            <!-- Categories -->
+            <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+                <button class="filter-tag active">All Documents</button>
+                <button class="filter-tag">Identity</button>
+                <button class="filter-tag">Academic</button>
+                <button class="filter-tag">Financial</button>
+                <button class="filter-tag">Medical</button>
+            </div>
+
+            <!-- Document Grid -->
+            <div class="document-grid">
+                <!-- Aadhaar Card -->
+                <div class="document-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="document-icon doc-identity">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i> VERIFIED
+                        </div>
+                    </div>
+                    <h4 style="margin: 0 0 4px;">Aadhaar Card</h4>
+                    <p class="text-muted" style="font-size: 12px; margin-bottom: 16px;">Last accessed: 2 hours ago</p>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-secondary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Viewing Aadhaar: Your ID is masked for privacy. View full?')">View</button>
+                        <button class="btn btn-primary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Share Securely: Generates a 15-minute one-time link for verification.')">Share</button>
+                    </div>
+                </div>
+
+                <!-- PAN Card -->
+                <div class="document-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="document-icon doc-identity">
+                            <i class="fas fa-id-badge"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i> VERIFIED
+                        </div>
+                    </div>
+                    <h4 style="margin: 0 0 4px;">PAN Card</h4>
+                    <p class="text-muted" style="font-size: 12px; margin-bottom: 16px;">Last accessed: Yesterday</p>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-secondary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Viewing PAN Card details...')">View</button>
+                        <button class="btn btn-primary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Share PAN link...')">Share</button>
+                    </div>
+                </div>
+
+                <!-- B.Tech Degree -->
+                <div class="document-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="document-icon doc-education">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i> VERIFIED
+                        </div>
+                    </div>
+                    <h4 style="margin: 0 0 4px;">B.Tech Degree Certificate</h4>
+                    <p class="text-muted" style="font-size: 12px; margin-bottom: 16px;">Verified via
+                        Digilocker/University</p>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-secondary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Viewing Certificate...')">View</button>
+                        <button class="btn btn-primary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Share Academic Record...')">Share</button>
+                    </div>
+                </div>
+
+                <!-- Income Certificate -->
+                <div class="document-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="document-icon doc-finance">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="verified-badge" style="background: rgba(255, 69, 0, 0.1); color: var(--ap-orange);">
+                            <i class="fas fa-clock"></i> EXPIRED
+                        </div>
+                    </div>
+                    <h4 style="margin: 0 0 4px;">Income Certificate (FY 24-25)</h4>
+                    <p class="text-muted" style="font-size: 12px; margin-bottom: 16px;">Required for scholarship renewal
+                    </p>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-primary" style="font-size: 12px; padding: 8px 12px; width: 100%;"
+                            onclick="alert('Apply for Renewal: Starting a fresh Income Certificate application via MeeSeva integration...')">Apply
+                            for Renewal</button>
+                    </div>
+                </div>
+
+                <!-- 10th Marks Memo -->
+                <div class="document-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="document-icon doc-education">
+                            <i class="fas fa-scroll"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i> VERIFIED
+                        </div>
+                    </div>
+                    <h4 style="margin: 0 0 4px;">SSC Marks Memo</h4>
+                    <p class="text-muted" style="font-size: 12px; margin-bottom: 16px;">Board of Secondary Education, AP
+                    </p>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-secondary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Viewing SSC Memo...')">View</button>
+                        <button class="btn btn-primary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Share Memo...')">Share</button>
+                    </div>
+                </div>
+
+                <!-- Bank Passbook -->
+                <div class="document-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div class="document-icon doc-finance">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="verified-badge">
+                            <i class="fas fa-check-circle"></i> VERIFIED
+                        </div>
+                    </div>
+                    <h4 style="margin: 0 0 4px;">Bank Passbook (SBI)</h4>
+                    <p class="text-muted" style="font-size: 12px; margin-bottom: 16px;">Linked for Direct Benefit
+                        Transfer</p>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-secondary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Viewing Bank Passbook...')">View</button>
+                        <button class="btn btn-primary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                            onclick="alert('Share Bank Details...')">Share</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        <p><strong>🎯 DEMO MODE:</strong> Secure vault simulated for "Dharma Teja". Files are for demonstration
+            purposes.</p>
+        <a href="index.html" class="btn btn-accent" style="padding: 10px 20px; font-size: 13px;">
+            <i class="fas fa-arrow-left"></i> Back to Showcase
+        </a>
+    </div>
+</body>
+
+</html>
