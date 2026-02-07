@@ -18,169 +18,12 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <style>
         body {
             background: var(--light-gray);
         }
 
-        /* Dashboard Layout */
-        .dashboard {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 280px;
-            background: var(--gradient-hero);
-            padding: 24px;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-        }
-
-        .sidebar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: white;
-            font-size: 1.25rem;
-            font-weight: 700;
-            padding-bottom: 24px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 24px;
-        }
-
-        .nav-menu {
-            list-style: none;
-        }
-
-        .nav-item {
-            margin-bottom: 8px;
-        }
-
-        .nav-item a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 16px;
-            color: rgba(255, 255, 255, 0.7);
-            border-radius: 12px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-item a:hover,
-        .nav-item a.active {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        .nav-item a.active {
-            background: var(--ap-orange);
-            color: white;
-        }
-
-        .nav-item i {
-            width: 20px;
-            font-size: 16px;
-        }
-
-        .sidebar-footer {
-            position: absolute;
-            bottom: 24px;
-            left: 24px;
-            right: 24px;
-        }
-
-        .user-card {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-        }
-
-        .user-avatar {
-            width: 42px;
-            height: 42px;
-            background: var(--gradient-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--near-black);
-        }
-
-        .user-info h5 {
-            color: white;
-            font-size: 14px;
-            margin: 0 0 2px;
-        }
-
-        .user-info p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 12px;
-            margin: 0;
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            margin-left: 280px;
-            padding: 32px;
-        }
-
-        /* Top Bar */
-        .topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 32px;
-        }
-
-        .topbar h1 {
-            font-size: 1.75rem;
-            color: var(--near-black);
-        }
-
-        .topbar-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .notification-btn {
-            position: relative;
-            width: 44px;
-            height: 44px;
-            background: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .notification-btn::after {
-            content: '3';
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            width: 20px;
-            height: 20px;
-            background: var(--ap-orange);
-            color: white;
-            font-size: 11px;
-            font-weight: 700;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
         /* Stats Grid */
         .stats-grid {
@@ -704,58 +547,58 @@
         <aside class="sidebar">
             <div class="sidebar-brand">
                 <i class="fas fa-fingerprint"></i>
-                NationalCitizen
+                <span>NationalCitizen</span>
             </div>
 
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="dashboard.html" class="active">
+                    <a href="javascript:void(0)" onclick="showSection('dashboard')" id="nav-dashboard" class="active">
                         <i class="fas fa-home"></i>
-                        Dashboard
+                        <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="schemes.html">
+                    <a href="javascript:void(0)" onclick="showSection('schemes')" id="nav-schemes">
                         <i class="fas fa-search"></i>
-                        Discover Schemes
+                        <span>Discover Schemes</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="applications.html">
+                    <a href="javascript:void(0)" onclick="showSection('applications')" id="nav-applications">
                         <i class="fas fa-file-alt"></i>
-                        My Applications
+                        <span>My Applications</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="vault.html">
+                    <a href="javascript:void(0)" onclick="showSection('vault')" id="nav-vault">
                         <i class="fas fa-folder-open"></i>
-                        Document Vault
+                        <span>Document Vault</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="mentors.html">
+                    <a href="javascript:void(0)" onclick="showSection('mentors')" id="nav-mentors">
                         <i class="fas fa-users"></i>
-                        Find Mentors
+                        <span>Find Mentors</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="notifications.html">
+                    <a href="javascript:void(0)" onclick="showSection('notifications')" id="nav-notifications">
                         <i class="fas fa-bell"></i>
-                        Notifications
+                        <span>Notifications</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="settings.html">
+                    <a href="javascript:void(0)" onclick="showSection('settings')" id="nav-settings">
                         <i class="fas fa-cog"></i>
-                        Settings
+                        <span>Settings</span>
                     </a>
                 </li>
             </ul>
 
             <div class="sidebar-footer">
                 <a href="index.html"
-                    style="display: block; margin-bottom: 16px; color: rgba(255,255,255,0.6); font-size: 14px;">
-                    <i class="fas fa-arrow-left"></i> Back to Showcase
+                    style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none;">
+                    <i class="fas fa-arrow-left"></i> <span>Back to Showcase</span>
                 </a>
                 <div class="user-card">
                     <div class="user-avatar">DT</div>
@@ -771,381 +614,935 @@
         <main class="main-content">
             <!-- Top Bar -->
             <div class="topbar">
-                <div>
+                <div id="topbar-content">
                     <h1>Welcome back, Dharma! 👋</h1>
                     <p class="text-muted" style="margin: 0;">Here's your personalized government services dashboard</p>
                 </div>
                 <div class="topbar-actions">
-                    <button class="notification-btn"
-                        onclick="alert('You have 3 new notifications related to your Skill Development Grant.')">
+                    <button class="notification-btn" onclick="showSection('notifications')">
                         <i class="fas fa-bell"></i>
                     </button>
-                    <a href="schemes.html" class="btn btn-primary">
+                    <button class="btn btn-primary" onclick="showSection('schemes')">
                         <i class="fas fa-plus"></i>
                         Apply to Scheme
-                    </a>
+                    </button>
                 </div>
             </div>
 
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-card-header">
-                        <div class="stat-card-icon navy">
-                            <i class="fas fa-list-check"></i>
-                        </div>
-                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 12</span>
-                    </div>
-                    <div class="stat-card-value">47</div>
-                    <div class="stat-card-label">Eligible Schemes</div>
-                </div>
+            <div id="spa-sections">
+                <!-- Section: Dashboard Overview -->
+                <section id="section-dashboard" class="spa-section active-section">
 
-                <div class="stat-card">
-                    <div class="stat-card-header">
-                        <div class="stat-card-icon orange">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card-value">3</div>
-                    <div class="stat-card-label">Active Applications</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-card-header">
-                        <div class="stat-card-icon green">
-                            <i class="fas fa-rupee-sign"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card-value">₹1,85,000</div>
-                    <div class="stat-card-label">Benefits Received (Lifetime)</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-card-header">
-                        <div class="stat-card-icon gold">
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card-value">85%</div>
-                    <div class="stat-card-label">Civic Score</div>
-                </div>
-            </div>
-
-            <!-- Content Grid -->
-            <div class="content-grid">
-                <!-- Left Column -->
-                <div>
-                    <!-- Life Stage Card -->
-                    <div class="life-stage-card">
-                        <div class="life-stage-header">
-                            <div>
-                                <h3 style="margin: 0 0 4px;">Current Life Stage</h3>
-                                <p style="margin: 0; opacity: 0.8; font-size: 14px;">Career & Entrepreneurship (23-30
-                                    years)</p>
-                            </div>
-                            <span class="life-stage-badge">
-                                <i class="fas fa-briefcase"></i> Stage 6 of 9
-                            </span>
-                        </div>
-                        <div class="life-stage-progress">
-                            <label>Life journey progress: 26 years old</label>
-                            <div class="progress-bar-lg">
-                                <div class="fill" style="width: 37%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Top Eligible Schemes -->
-                    <div class="dashboard-card">
-                        <div class="dashboard-card-header">
-                            <h3><i class="fas fa-sparkles text-gold"></i> Top Recommended Schemes</h3>
-                            <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;">View All
-                                47</a>
-                        </div>
-                        <div class="dashboard-card-body">
-                            <div class="scheme-item">
-                                <div class="scheme-icon"
-                                    style="background: rgba(255, 69, 0, 0.1); color: var(--ap-orange);">
-                                    <i class="fas fa-rocket"></i>
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <div class="stat-card-icon navy">
+                                    <i class="fas fa-list-check"></i>
                                 </div>
-                                <div class="scheme-content">
-                                    <div class="scheme-title">Pradhan Mantri Mudra Yojana</div>
-                                    <div class="scheme-meta">
-                                        <span class="scheme-match high"><i class="fas fa-check-circle"></i> 95%
-                                            Match</span>
-                                        <span>•</span>
-                                        <span class="scheme-benefit">Up to ₹10 Lakhs</span>
-                                        <span>•</span>
-                                        <span><i class="fas fa-clock"></i> 45 days left</span>
+                                <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 12</span>
+                            </div>
+                            <div class="stat-card-value">47</div>
+                            <div class="stat-card-label">Eligible Schemes</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <div class="stat-card-icon orange">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                            <div class="stat-card-value">3</div>
+                            <div class="stat-card-label">Active Applications</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <div class="stat-card-icon green">
+                                    <i class="fas fa-rupee-sign"></i>
+                                </div>
+                            </div>
+                            <div class="stat-card-value">₹1,85,000</div>
+                            <div class="stat-card-label">Benefits Received (Lifetime)</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-card-header">
+                                <div class="stat-card-icon gold">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="stat-card-value">85%</div>
+                            <div class="stat-card-label">Civic Score</div>
+                        </div>
+                    </div>
+
+                    <!-- Content Grid -->
+                    <div class="content-grid">
+                        <!-- Left Column -->
+                        <div>
+                            <!-- Life Stage Card -->
+                            <div class="life-stage-card">
+                                <div class="life-stage-header">
+                                    <div>
+                                        <h3 style="margin: 0 0 4px;">Current Life Stage</h3>
+                                        <p style="margin: 0; opacity: 0.8; font-size: 14px;">Career & Entrepreneurship
+                                            (23-30
+                                            years)</p>
+                                    </div>
+                                    <span class="life-stage-badge">
+                                        <i class="fas fa-briefcase"></i> Stage 6 of 9
+                                    </span>
+                                </div>
+                                <div class="life-stage-progress">
+                                    <label>Life journey progress: 26 years old</label>
+                                    <div class="progress-bar-lg">
+                                        <div class="fill" style="width: 37%;"></div>
                                     </div>
                                 </div>
-                                <div class="scheme-actions">
-                                    <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply
-                                        Now</button>
+                            </div>
+
+                            <!-- Top Eligible Schemes -->
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-header">
+                                    <h3><i class="fas fa-sparkles text-gold"></i> Top Recommended Schemes</h3>
+                                    <a href="#" class="btn btn-secondary"
+                                        style="padding: 8px 16px; font-size: 13px;">View All
+                                        47</a>
+                                </div>
+                                <div class="dashboard-card-body">
+                                    <div class="scheme-item">
+                                        <div class="scheme-icon"
+                                            style="background: rgba(255, 69, 0, 0.1); color: var(--ap-orange);">
+                                            <i class="fas fa-rocket"></i>
+                                        </div>
+                                        <div class="scheme-content">
+                                            <div class="scheme-title">Pradhan Mantri Mudra Yojana</div>
+                                            <div class="scheme-meta">
+                                                <span class="scheme-match high"><i class="fas fa-check-circle"></i> 95%
+                                                    Match</span>
+                                                <span>•</span>
+                                                <span class="scheme-benefit">Up to ₹10 Lakhs</span>
+                                                <span>•</span>
+                                                <span><i class="fas fa-clock"></i> 45 days left</span>
+                                            </div>
+                                        </div>
+                                        <div class="scheme-actions">
+                                            <button class="btn btn-primary"
+                                                style="padding: 10px 20px; font-size: 13px;">Apply
+                                                Now</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="scheme-item">
+                                        <div class="scheme-icon"
+                                            style="background: rgba(3, 109, 51, 0.1); color: var(--ap-green);">
+                                            <i class="fas fa-seedling"></i>
+                                        </div>
+                                        <div class="scheme-content">
+                                            <div class="scheme-title">Startup India Registration</div>
+                                            <div class="scheme-meta">
+                                                <span class="scheme-match high"><i class="fas fa-check-circle"></i> 92%
+                                                    Match</span>
+                                                <span>•</span>
+                                                <span class="scheme-benefit">Tax Benefits + Grants</span>
+                                                <span>•</span>
+                                                <span><i class="fas fa-infinity"></i> Open</span>
+                                            </div>
+                                        </div>
+                                        <div class="scheme-actions">
+                                            <button class="btn btn-primary"
+                                                style="padding: 10px 20px; font-size: 13px;">Apply
+                                                Now</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="scheme-item">
+                                        <div class="scheme-icon"
+                                            style="background: rgba(29, 48, 127, 0.1); color: var(--ap-navy);">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </div>
+                                        <div class="scheme-content">
+                                            <div class="scheme-title">AICTE Skill Development Grant</div>
+                                            <div class="scheme-meta">
+                                                <span class="scheme-match medium"><i class="fas fa-check-circle"></i>
+                                                    87%
+                                                    Match</span>
+                                                <span>•</span>
+                                                <span class="scheme-benefit">₹50,000</span>
+                                                <span>•</span>
+                                                <span><i class="fas fa-clock"></i> 30 days left</span>
+                                            </div>
+                                        </div>
+                                        <div class="scheme-actions">
+                                            <button class="btn btn-primary"
+                                                style="padding: 10px 20px; font-size: 13px;">Apply
+                                                Now</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="scheme-item">
+                                        <div class="scheme-icon"
+                                            style="background: rgba(253, 214, 0, 0.2); color: var(--near-black);">
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div class="scheme-content">
+                                            <div class="scheme-title">PM Awas Yojana (Urban)</div>
+                                            <div class="scheme-meta">
+                                                <span class="scheme-match medium"><i class="fas fa-check-circle"></i>
+                                                    78%
+                                                    Match</span>
+                                                <span>•</span>
+                                                <span class="scheme-benefit">₹2.5 Lakh Subsidy</span>
+                                                <span>•</span>
+                                                <span><i class="fas fa-clock"></i> 60 days left</span>
+                                            </div>
+                                        </div>
+                                        <div class="scheme-actions">
+                                            <button class="btn btn-secondary"
+                                                style="padding: 10px 20px; font-size: 13px;">View
+                                                Details</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="scheme-item">
-                                <div class="scheme-icon"
-                                    style="background: rgba(3, 109, 51, 0.1); color: var(--ap-green);">
-                                    <i class="fas fa-seedling"></i>
+                            <!-- Active Applications -->
+                            <div class="dashboard-card mt-6">
+                                <div class="dashboard-card-header">
+                                    <h3><i class="fas fa-file-alt text-navy"></i> Active Applications</h3>
+                                    <a href="#" class="btn btn-secondary"
+                                        style="padding: 8px 16px; font-size: 13px;">View
+                                        All</a>
                                 </div>
-                                <div class="scheme-content">
-                                    <div class="scheme-title">Startup India Registration</div>
-                                    <div class="scheme-meta">
-                                        <span class="scheme-match high"><i class="fas fa-check-circle"></i> 92%
-                                            Match</span>
-                                        <span>•</span>
-                                        <span class="scheme-benefit">Tax Benefits + Grants</span>
-                                        <span>•</span>
-                                        <span><i class="fas fa-infinity"></i> Open</span>
+                                <div class="dashboard-card-body">
+                                    <div class="application-item">
+                                        <div class="application-status review"></div>
+                                        <div class="application-content">
+                                            <div class="application-title">PM SVANidhi Loan</div>
+                                            <div class="application-meta">Applied on Feb 1, 2026 • Street Vendor Scheme
+                                            </div>
+                                        </div>
+                                        <span class="application-badge review">Under Review</span>
+                                    </div>
+
+                                    <div class="application-item">
+                                        <div class="application-status review"></div>
+                                        <div class="application-content">
+                                            <div class="application-title">Jagananna Vidya Deevena</div>
+                                            <div class="application-meta">Applied on Feb 5, 2026 • Education Support
+                                            </div>
+                                        </div>
+                                        <span class="application-badge review">Verifying Profile</span>
+                                    </div>
+
+                                    <div class="application-item">
+                                        <div class="application-status pending"></div>
+                                        <div class="application-content">
+                                            <div class="application-title">National Scholarship Portal</div>
+                                            <div class="application-meta">Applied on Jan 28, 2026 • Education Support
+                                            </div>
+                                        </div>
+                                        <span class="application-badge pending">Documents Pending</span>
+                                    </div>
+
+                                    <div class="application-item">
+                                        <div class="application-status approved"></div>
+                                        <div class="application-content">
+                                            <div class="application-title">Skill India Certificate</div>
+                                            <div class="application-meta">Applied on Jan 15, 2026 • Skill Development
+                                            </div>
+                                        </div>
+                                        <span class="application-badge approved">Approved</span>
                                     </div>
                                 </div>
-                                <div class="scheme-actions">
-                                    <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply
-                                        Now</button>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div>
+                            <!-- Civic Score -->
+                            <div class="dashboard-card">
+                                <div class="dashboard-card-header">
+                                    <h3><i class="fas fa-shield-check text-green"></i> Civic Score</h3>
+                                </div>
+                                <div class="civic-score">
+                                    <div class="civic-circle">
+                                        <span class="civic-value">85%</span>
+                                    </div>
+                                    <div class="civic-label">Excellent Standing</div>
+                                    <div class="civic-badges">
+                                        <span class="civic-badge"
+                                            style="background: rgba(3, 109, 51, 0.1); color: var(--ap-green);"
+                                            title="Aadhaar Updated"><i class="fas fa-fingerprint"></i></span>
+                                        <span class="civic-badge"
+                                            style="background: rgba(29, 48, 127, 0.1); color: var(--ap-navy);"
+                                            title="Voter Registered"><i class="fas fa-vote-yea"></i></span>
+                                        <span class="civic-badge"
+                                            style="background: rgba(253, 214, 0, 0.2); color: var(--near-black);"
+                                            title="Tax Filed"><i class="fas fa-file-invoice"></i></span>
+                                        <span class="civic-badge"
+                                            style="background: rgba(255, 69, 0, 0.1); color: var(--ap-orange);"
+                                            title="PAN Linked"><i class="fas fa-id-card"></i></span>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="scheme-item">
-                                <div class="scheme-icon"
-                                    style="background: rgba(29, 48, 127, 0.1); color: var(--ap-navy);">
-                                    <i class="fas fa-graduation-cap"></i>
+                            <!-- Notifications -->
+                            <div class="dashboard-card mt-6">
+                                <div class="dashboard-card-header">
+                                    <h3><i class="fas fa-bell text-orange"></i> Recent Notifications</h3>
                                 </div>
-                                <div class="scheme-content">
-                                    <div class="scheme-title">AICTE Skill Development Grant</div>
-                                    <div class="scheme-meta">
-                                        <span class="scheme-match medium"><i class="fas fa-check-circle"></i> 87%
-                                            Match</span>
-                                        <span>•</span>
-                                        <span class="scheme-benefit">₹50,000</span>
-                                        <span>•</span>
-                                        <span><i class="fas fa-clock"></i> 30 days left</span>
+                                <div class="dashboard-card-body" style="padding: 16px;">
+                                    <div class="notification-item" style="cursor: pointer;"
+                                        onclick="window.location.href='notifications.html'">
+                                        <div class="notification-icon deadline">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <div class="notification-content">
+                                            <h5>Deadline Approaching!</h5>
+                                            <p>AICTE Skill Grant closes in 30 days</p>
+                                            <div class="notification-time">2 hours ago</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="scheme-actions">
-                                    <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply
-                                        Now</button>
+
+                                    <div class="notification-item" style="cursor: pointer;"
+                                        onclick="window.location.href='vault.html'">
+                                        <div class="notification-icon success">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="notification-content">
+                                            <h5>Verification Successful</h5>
+                                            <p>Your self-declared Income Certificate has been verified.</p>
+                                            <div class="notification-time">5 hours ago</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-item" style="cursor: pointer;"
+                                        onclick="window.location.href='mentors.html'">
+                                        <div class="notification-icon info">
+                                            <i class="fas fa-comment-dots"></i>
+                                        </div>
+                                        <div class="notification-content">
+                                            <h5>New Message from Mentor</h5>
+                                            <p>Priya Sharma: "Let's discuss your MUDRA application."</p>
+                                            <div class="notification-time">Yesterday</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-item" style="cursor: pointer;"
+                                        onclick="window.location.href='applications.html'">
+                                        <div class="notification-icon success">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="notification-content">
+                                            <h5>Application Approved</h5>
+                                            <p>Your Skill India Certificate is ready</p>
+                                            <div class="notification-time">1 day ago</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-item" style="cursor: pointer;"
+                                        onclick="window.location.href='schemes.html'">
+                                        <div class="notification-icon info">
+                                            <i class="fas fa-sparkles"></i>
+                                        </div>
+                                        <div class="notification-content">
+                                            <h5>New Scheme Available</h5>
+                                            <p>You're 95% eligible for MUDRA Yojana</p>
+                                            <div class="notification-time">2 days ago</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="scheme-item">
-                                <div class="scheme-icon"
-                                    style="background: rgba(253, 214, 0, 0.2); color: var(--near-black);">
-                                    <i class="fas fa-home"></i>
+                            <!-- Mentor Match -->
+                            <div class="dashboard-card mt-6">
+                                <div class="dashboard-card-header">
+                                    <h3><i class="fas fa-user-tie text-navy"></i> Recommended Mentor</h3>
                                 </div>
-                                <div class="scheme-content">
-                                    <div class="scheme-title">PM Awas Yojana (Urban)</div>
-                                    <div class="scheme-meta">
-                                        <span class="scheme-match medium"><i class="fas fa-check-circle"></i> 78%
-                                            Match</span>
-                                        <span>•</span>
-                                        <span class="scheme-benefit">₹2.5 Lakh Subsidy</span>
-                                        <span>•</span>
-                                        <span><i class="fas fa-clock"></i> 60 days left</span>
+                                <div class="dashboard-card-body">
+                                    <div class="mentor-card">
+                                        <div class="mentor-avatar">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                        <div class="mentor-info">
+                                            <div class="mentor-name">Priya Sharma</div>
+                                            <div class="mentor-domain">Entrepreneurship • IIM-B</div>
+                                            <div class="mentor-rating">
+                                                <i class="fas fa-star"></i> 4.9 (145 reviews)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span class="mentor-match"><i class="fas fa-bullseye"></i> 92% Match</span>
+                                        <button class="btn btn-primary"
+                                            style="padding: 10px 20px; font-size: 13px;">Connect</button>
                                     </div>
                                 </div>
-                                <div class="scheme-actions">
-                                    <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 13px;">View
-                                        Details</button>
+                            </div>
+
+                            <div class="dashboard-card mt-6">
+                                <div class="dashboard-card-header">
+                                    <h3><i class="fas fa-bolt text-gold"></i> Quick Actions</h3>
+                                </div>
+                                <div class="dashboard-card-body" style="display: grid; gap: 12px;">
+                                    <button class="btn btn-secondary"
+                                        style="justify-content: flex-start; padding: 14px 20px;"
+                                        onclick="window.location.href='settings.html'">
+                                        <i class="fas fa-id-card"></i> Update Profile Details
+                                    </button>
+                                    <button class="btn btn-secondary"
+                                        style="justify-content: flex-start; padding: 14px 20px;"
+                                        onclick="window.location.href='vault.html'">
+                                        <i class="fas fa-upload"></i> Manage Documents
+                                    </button>
+                                    <button class="btn btn-secondary"
+                                        style="justify-content: flex-start; padding: 14px 20px;"
+                                        onclick="window.location.href='mentors.html'">
+                                        <i class="fas fa-users"></i> Find Mentors
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </section>
 
-                    <!-- Active Applications -->
-                    <div class="dashboard-card mt-6">
-                        <div class="dashboard-card-header">
-                            <h3><i class="fas fa-file-alt text-navy"></i> Active Applications</h3>
-                            <a href="#" class="btn btn-secondary" style="padding: 8px 16px; font-size: 13px;">View
-                                All</a>
+                <!-- Section: Discover Schemes -->
+                <section id="section-schemes" class="spa-section">
+                    <!-- Filters -->
+                    <div class="filters-bar">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search schemes by name, ministry, or keyword..."
+                                id="searchInput">
                         </div>
-                        <div class="dashboard-card-body">
-                            <div class="application-item">
-                                <div class="application-status review"></div>
-                                <div class="application-content">
-                                    <div class="application-title">PM SVANidhi Loan</div>
-                                    <div class="application-meta">Applied on Feb 1, 2026 • Street Vendor Scheme</div>
-                                </div>
-                                <span class="application-badge review">Under Review</span>
+                        <div class="filter-row">
+                            <div class="filter-group">
+                                <label>Category:</label>
+                                <button class="filter-tag active">All</button>
+                                <button class="filter-tag">Entrepreneur</button>
+                                <button class="filter-tag">Education</button>
+                                <button class="filter-tag">Health</button>
+                                <button class="filter-tag">Housing</button>
+                                <button class="filter-tag">Agriculture</button>
+                                <button class="filter-tag">Pension</button>
                             </div>
-
-                            <div class="application-item">
-                                <div class="application-status review"></div>
-                                <div class="application-content">
-                                    <div class="application-title">Jagananna Vidya Deevena</div>
-                                    <div class="application-meta">Applied on Feb 5, 2026 • Education Support</div>
-                                </div>
-                                <span class="application-badge review">Verifying Profile</span>
-                            </div>
-
-                            <div class="application-item">
-                                <div class="application-status pending"></div>
-                                <div class="application-content">
-                                    <div class="application-title">National Scholarship Portal</div>
-                                    <div class="application-meta">Applied on Jan 28, 2026 • Education Support</div>
-                                </div>
-                                <span class="application-badge pending">Documents Pending</span>
-                            </div>
-
-                            <div class="application-item">
-                                <div class="application-status approved"></div>
-                                <div class="application-content">
-                                    <div class="application-title">Skill India Certificate</div>
-                                    <div class="application-meta">Applied on Jan 15, 2026 • Skill Development</div>
-                                </div>
-                                <span class="application-badge approved">Approved</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column -->
-                <div>
-                    <!-- Civic Score -->
-                    <div class="dashboard-card">
-                        <div class="dashboard-card-header">
-                            <h3><i class="fas fa-shield-check text-green"></i> Civic Score</h3>
-                        </div>
-                        <div class="civic-score">
-                            <div class="civic-circle">
-                                <span class="civic-value">85%</span>
-                            </div>
-                            <div class="civic-label">Excellent Standing</div>
-                            <div class="civic-badges">
-                                <span class="civic-badge"
-                                    style="background: rgba(3, 109, 51, 0.1); color: var(--ap-green);"
-                                    title="Aadhaar Updated"><i class="fas fa-fingerprint"></i></span>
-                                <span class="civic-badge"
-                                    style="background: rgba(29, 48, 127, 0.1); color: var(--ap-navy);"
-                                    title="Voter Registered"><i class="fas fa-vote-yea"></i></span>
-                                <span class="civic-badge"
-                                    style="background: rgba(253, 214, 0, 0.2); color: var(--near-black);"
-                                    title="Tax Filed"><i class="fas fa-file-invoice"></i></span>
-                                <span class="civic-badge"
-                                    style="background: rgba(255, 69, 0, 0.1); color: var(--ap-orange);"
-                                    title="PAN Linked"><i class="fas fa-id-card"></i></span>
+                            <div style="flex: 1;"></div>
+                            <div class="filter-group">
+                                <label>Sort by:</label>
+                                <select class="filter-select">
+                                    <option>Match Score (High to Low)</option>
+                                    <option>Benefit Amount</option>
+                                    <option>Deadline</option>
+                                    <option>Recently Added</option>
+                                </select>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Notifications -->
-                    <div class="dashboard-card mt-6">
-                        <div class="dashboard-card-header">
-                            <h3><i class="fas fa-bell text-orange"></i> Recent Notifications</h3>
+                    <!-- Results Header -->
+                    <div class="results-header">
+                        <div class="results-count">
+                            Showing <strong>47 schemes</strong> matching your profile
                         </div>
-                        <div class="dashboard-card-body" style="padding: 16px;">
-                            <div class="notification-item" style="cursor: pointer;"
-                                onclick="window.location.href='notifications.html'">
-                                <div class="notification-icon deadline">
-                                    <i class="fas fa-exclamation-triangle"></i>
+                        <div class="view-toggle">
+                            <button class="view-btn active"><i class="fas fa-grid-2"></i></button>
+                            <button class="view-btn"><i class="fas fa-list"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Schemes Grid -->
+                    <div class="schemes-grid">
+                        <!-- Scheme 1 -->
+                        <div class="scheme-card" data-category="Entrepreneur">
+                            <div class="scheme-card-top">
+                                <div class="scheme-card-header">
+                                    <div class="scheme-card-icon cat-entrepreneur">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="scheme-card-title">Pradhan Mantri Mudra Yojana</h4>
+                                        <p class="scheme-card-ministry">Ministry of Finance • MUDRA</p>
+                                    </div>
                                 </div>
-                                <div class="notification-content">
-                                    <h5>Deadline Approaching!</h5>
-                                    <p>AICTE Skill Grant closes in 30 days</p>
-                                    <div class="notification-time">2 hours ago</div>
+                                <div class="scheme-match-bar">
+                                    <div class="scheme-match-header">
+                                        <span class="scheme-match-label">Eligibility Match</span>
+                                        <span class="scheme-match-value high">95%</span>
+                                    </div>
+                                    <div class="match-progress">
+                                        <div class="match-progress-fill high" style="width: 95%;"></div>
+                                    </div>
+                                </div>
+                                <p class="scheme-card-desc">Non-collateral loans up to ₹10 lakhs for business startups
+                                    and MSMEs
+                                    under Shishu, Kishore, and Tarun categories.</p>
+                            </div>
+                            <div class="scheme-card-meta">
+                                <div class="scheme-meta-item">
+                                    <div class="scheme-meta-value benefit">₹10L</div>
+                                    <div class="scheme-meta-label">Max Benefit</div>
+                                </div>
+                                <div class="scheme-meta-item">
+                                    <div class="scheme-meta-value">45 days</div>
+                                    <div class="scheme-meta-label">Deadline</div>
+                                </div>
+                                <div class="scheme-meta-item">
+                                    <div class="scheme-meta-value">78%</div>
+                                    <div class="scheme-meta-label">Approval Rate</div>
                                 </div>
                             </div>
+                            <div class="scheme-card-footer">
+                                <span class="scheme-docs"><i class="fas fa-check-circle"></i> 5/7 docs ready</span>
+                                <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;"
+                                    onclick="openSchemeModal('Pradhan Mantri Mudra Yojana', 'Entrepreneurship', 'Up to ₹10 Lakhs')">Apply
+                                    Now</button>
+                            </div>
+                        </div>
 
-                            <div class="notification-item" style="cursor: pointer;"
-                                onclick="window.location.href='vault.html'">
-                                <div class="notification-icon success">
-                                    <i class="fas fa-check-circle"></i>
+                        <!-- Scheme 2 -->
+                        <div class="scheme-card" data-category="Entrepreneur">
+                            <div class="scheme-card-top">
+                                <div class="scheme-card-header">
+                                    <div class="scheme-card-icon cat-entrepreneur">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="scheme-card-title">Startup India Registration</h4>
+                                        <p class="scheme-card-ministry">DPIIT • Central Government</p>
+                                    </div>
                                 </div>
-                                <div class="notification-content">
-                                    <h5>Verification Successful</h5>
-                                    <p>Your self-declared Income Certificate has been verified.</p>
-                                    <div class="notification-time">5 hours ago</div>
+                                <div class="scheme-match-bar">
+                                    <div class="scheme-match-header">
+                                        <span class="scheme-match-label">Eligibility Match</span>
+                                        <span class="scheme-match-value high">92%</span>
+                                    </div>
+                                    <div class="match-progress">
+                                        <div class="match-progress-fill high" style="width: 92%;"></div>
+                                    </div>
+                                </div>
+                                <p class="scheme-card-desc">Official startup recognition with tax benefits (3-year
+                                    exemption),
+                                    easier compliance, and access to government tender priorities.</p>
+                            </div>
+                            <div class="scheme-card-meta">
+                                <div class="scheme-meta-item">
+                                    <div class="scheme-meta-value benefit">Tax Free</div>
+                                    <div class="scheme-meta-label">3 Years</div>
+                                </div>
+                                <div class="scheme-meta-item">
+                                    <div class="scheme-meta-value">Open</div>
+                                    <div class="scheme-meta-label">Always</div>
+                                </div>
+                                <div class="scheme-meta-item">
+                                    <div class="scheme-meta-value">85%</div>
+                                    <div class="scheme-meta-label">Approval Rate</div>
                                 </div>
                             </div>
+                            <div class="scheme-card-footer">
+                                <span class="scheme-docs"><i class="fas fa-check-circle"></i> 6/8 docs ready</span>
+                                <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;"
+                                    onclick="openSchemeModal('Startup India Registration', 'Entrepreneurship', 'Tax Exemption')">Apply
+                                    Now</button>
+                            </div>
+                        </div>
 
-                            <div class="notification-item" style="cursor: pointer;"
-                                onclick="window.location.href='mentors.html'">
-                                <div class="notification-icon info">
-                                    <i class="fas fa-comment-dots"></i>
+                        <!-- Scheme 6: Jagananna Vidya Deevena -->
+                        <div class="scheme-card" data-category="Education">
+                            <div class="scheme-card-top">
+                                <div class="scheme-card-header">
+                                    <div class="scheme-card-icon cat-education">
+                                        <i class="fas fa-book-reader"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="scheme-card-title">Jagananna Vidya Deevena</h4>
+                                        <p class="scheme-card-ministry">Higher Education • AP Government</p>
+                                    </div>
                                 </div>
-                                <div class="notification-content">
-                                    <h5>New Message from Mentor</h5>
-                                    <p>Priya Sharma: "Let's discuss your MUDRA application."</p>
-                                    <div class="notification-time">Yesterday</div>
+                                <div class="scheme-match-bar">
+                                    <div class="scheme-match-header">
+                                        <span class="scheme-match-label">Eligibility Match</span>
+                                        <span class="scheme-match-value high">98%</span>
+                                    </div>
+                                    <div class="match-progress">
+                                        <div class="match-progress-fill high" style="width: 98%;"></div>
+                                    </div>
+                                </div>
+                                <p class="scheme-card-desc">Complete fee reimbursement for students from low-income
+                                    families
+                                    pursuing higher education (ITI, Polytechnic, Degree, Engineering).</p>
+                            </div>
+                            <div class="scheme-card-meta">
+                                <div class="scheme-meta-item">
+                                    <div class="scheme-meta-value benefit">100%</div>
+                                    <div class="scheme-meta-label">Fee Refund</div>
+                                </div>
+                                <div class="scheme-meta-item">
+                                    <div class="scheme-meta-value">15 days</div>
+                                    <div class="scheme-meta-label">Deadline</div>
+                                </div>
+                                <div class="scheme-meta-item">
+                                    <div class="scheme-meta-value">94%</div>
+                                    <div class="scheme-meta-label">Approval Rate</div>
                                 </div>
                             </div>
+                            <div class="scheme-card-footer">
+                                <span class="scheme-docs"><i class="fas fa-check-circle"></i> 7/7 docs ready</span>
+                                <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;"
+                                    onclick="openSchemeModal('Jagananna Vidya Deevena', 'Education Support', '100% Fee Refund')">Apply
+                                    Now</button>
+                            </div>
+                        </div>
+                    </div>
 
-                            <div class="notification-item" style="cursor: pointer;"
-                                onclick="window.location.href='applications.html'">
-                                <div class="notification-icon success">
-                                    <i class="fas fa-check-circle"></i>
+                    <!-- Load More -->
+                    <div class="text-center mt-8" style="padding-bottom: 80px; text-align: center; margin-top: 40px;">
+                        <button class="btn btn-secondary btn-lg"
+                            onclick="alert('Demo Mode: Loading more schemes is disabled. Currently showing top matches for your profile.')">
+                            <i class="fas fa-plus"></i> Load More Schemes
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Section: My Applications -->
+                <section id="section-applications" class="spa-section">
+                    <!-- Applications Tabs -->
+                    <div style="display: flex; gap: 24px; margin-bottom: 24px; border-bottom: 1px solid var(--gray);">
+                        <button class="filter-tag active"
+                            style="background: none; border-bottom: 2px solid var(--ap-navy); border-radius: 0; padding: 12px 4px;">Active
+                            (4)</button>
+                        <button class="filter-tag"
+                            style="background: none; border-radius: 0; padding: 12px 4px;">Completed
+                            (12)</button>
+                        <button class="filter-tag" style="background: none; border-radius: 0; padding: 12px 4px;">Drafts
+                            (2)</button>
+                    </div>
+
+                    <div class="content-grid" style="grid-template-columns: 1.5fr 1fr;">
+                        <!-- Left Column: Application Cards -->
+                        <div>
+                            <div class="application-details-card">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                                    <div>
+                                        <h3 style="margin: 0 0 4px;">Pradhan Mantri Mudra Yojana</h3>
+                                        <p class="text-muted" style="margin: 0; font-size: 14px;">Application ID:
+                                            #MUDRA-2026-8842</p>
+                                    </div>
+                                    <span class="application-badge review">Under Review</span>
                                 </div>
-                                <div class="notification-content">
-                                    <h5>Application Approved</h5>
-                                    <p>Your Skill India Certificate is ready</p>
-                                    <div class="notification-time">1 day ago</div>
+
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 16px; background: var(--light-gray); border-radius: 12px; margin-bottom: 24px;">
+                                    <div>
+                                        <div
+                                            style="font-size: 11px; color: var(--dark-gray); text-transform: uppercase; margin-bottom: 4px;">
+                                            Submitted On</div>
+                                        <div style="font-weight: 600;">Feb 1, 2026</div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="font-size: 11px; color: var(--dark-gray); text-transform: uppercase; margin-bottom: 4px;">
+                                            Applied Benefit</div>
+                                        <div style="font-weight: 600; color: var(--ap-green);">₹5,00,000</div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="font-size: 11px; color: var(--dark-gray); text-transform: uppercase; margin-bottom: 4px;">
+                                            Est. Resolution</div>
+                                        <div style="font-weight: 600;">Feb 25, 2026</div>
+                                    </div>
+                                </div>
+
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot completed"></div>
+                                        <div class="timeline-content">
+                                            <h5>Application Submitted</h5>
+                                            <p>Your application was successfully filed via NationalCitizen Hub.</p>
+                                            <div class="timeline-time">Feb 1, 2026 • 10:30 AM</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot completed"></div>
+                                        <div class="timeline-content">
+                                            <h5>Document Verification</h5>
+                                            <p>Profile documents verified via National Citizen Vault.</p>
+                                            <div class="timeline-time">Feb 2, 2026 • 02:15 PM</div>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-dot active"></div>
+                                        <div class="timeline-content">
+                                            <h5>Departmental Review</h5>
+                                            <p>Currently being reviewed by Microfinance Department, AP Government.</p>
+                                            <div class="timeline-time">In Progress</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 24px; display: flex; gap: 12px;">
+                                    <button class="btn btn-secondary" style="flex: 1;"><i class="fas fa-download"></i>
+                                        Download
+                                        Receipt</button>
+                                    <button class="btn btn-primary" style="flex: 1;"><i class="fas fa-comment"></i>
+                                        Query
+                                        Department</button>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="notification-item" style="cursor: pointer;"
-                                onclick="window.location.href='schemes.html'">
-                                <div class="notification-icon info">
+                        <!-- Right Column: Status Summary -->
+                        <div>
+                            <div class="dashboard-card" style="padding: 24px;">
+                                <h3 style="margin-top: 0;">Application Stats</h3>
+                                <div style="display: grid; gap: 16px; margin-top: 20px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 14px; color: var(--dark-gray);"><i class="fas fa-circle"
+                                                style="color: var(--ap-orange); margin-right: 8px;"></i> Under
+                                            Review</span>
+                                        <span style="font-weight: 700;">3</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <span style="font-size: 14px; color: var(--dark-gray);"><i class="fas fa-circle"
+                                                style="color: #fdd600; margin-right: 8px;"></i> Action Required</span>
+                                        <span style="font-weight: 700;">1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section: Document Vault -->
+                <section id="section-vault" class="spa-section">
+                    <!-- Upload Zone -->
+                    <div class="upload-zone"
+                        onclick="alert('Select File: Choose a document from your device to upload to NationalCitizen Cloud.')">
+                        <i class="fas fa-cloud-upload-alt"
+                            style="font-size: 40px; color: var(--ap-navy); margin-bottom: 16px;"></i>
+                        <h3>Click or drag documents here to upload</h3>
+                        <p class="text-muted">Supports PDF, JPEG, PNG (Max 10MB per file)</p>
+                    </div>
+
+                    <!-- Document Grid -->
+                    <div class="document-grid">
+                        <!-- Aadhaar Card -->
+                        <div class="document-card">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <div class="document-icon doc-identity">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <div class="verified-badge">
+                                    <i class="fas fa-check-circle"></i> VERIFIED
+                                </div>
+                            </div>
+                            <h4 style="margin: 0 0 4px;">Aadhaar Card</h4>
+                            <p class="text-muted" style="font-size: 12px; margin-bottom: 16px;">Last accessed: 2 hours
+                                ago</p>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-secondary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                                    onclick="alert('Viewing Aadhaar...')">View</button>
+                                <button class="btn btn-primary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                                    onclick="alert('Share Securely...')">Share</button>
+                            </div>
+                        </div>
+
+                        <!-- PAN Card -->
+                        <div class="document-card">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <div class="document-icon doc-identity">
+                                    <i class="fas fa-id-badge"></i>
+                                </div>
+                                <div class="verified-badge">
+                                    <i class="fas fa-check-circle"></i> VERIFIED
+                                </div>
+                            </div>
+                            <h4 style="margin: 0 0 4px;">PAN Card</h4>
+                            <p class="text-muted" style="font-size: 12px; margin-bottom: 16px;">Last accessed: Yesterday
+                            </p>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="btn btn-secondary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                                    onclick="alert('Viewing PAN Card...')">View</button>
+                                <button class="btn btn-primary" style="font-size: 12px; padding: 8px 12px; flex: 1;"
+                                    onclick="alert('Share PAN...')">Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Section: Find Mentors -->
+                <section id="section-mentors" class="spa-section">
+                    <!-- Filters -->
+                    <div style="display: flex; gap: 12px; margin-bottom: 32px; overflow-x: auto; padding-bottom: 8px;">
+                        <button class="filter-tag active">Top Matches</button>
+                        <button class="filter-tag">Entrepreneurship</button>
+                        <button class="filter-tag">AI & Technology</button>
+                        <button class="filter-tag">Agricultural Innovation</button>
+                    </div>
+
+                    <!-- Mentor Grid -->
+                    <div class="mentor-grid">
+                        <!-- Mentor: Priya Sharma -->
+                        <div class="mentor-card">
+                            <div class="mentor-header">
+                                <div
+                                    style="width: 72px; height: 72px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--ap-navy); border: 3px solid white;">
+                                    PS</div>
+                                <div>
+                                    <h3 style="margin: 0 0 4px;">Priya Sharma</h3>
+                                    <p class="text-muted" style="margin: 0; font-size: 14px;">Startup Consultant •
+                                        Invest India</p>
+                                    <div class="match-score"><i class="fas fa-bolt"></i> 98% AI Match</div>
+                                </div>
+                            </div>
+                            <div class="mentor-body">
+                                <div class="match-reason">
                                     <i class="fas fa-sparkles"></i>
+                                    <p>Matched for your <strong>PM MUDRA</strong> application and interest in scaling
+                                        tech-startups.</p>
                                 </div>
-                                <div class="notification-content">
-                                    <h5>New Scheme Available</h5>
-                                    <p>You're 95% eligible for MUDRA Yojana</p>
-                                    <div class="notification-time">2 days ago</div>
+                                <div style="display: flex; gap: 12px;">
+                                    <button class="btn btn-primary" style="flex: 1;"
+                                        onclick="alert('Chat with Priya...')">Chat Now</button>
+                                    <button class="btn btn-secondary" style="flex: 1;"
+                                        onclick="alert('Book Call...')">Book Call</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </section>
 
-                    <!-- Mentor Match -->
-                    <div class="dashboard-card mt-6">
-                        <div class="dashboard-card-header">
-                            <h3><i class="fas fa-user-tie text-navy"></i> Recommended Mentor</h3>
-                        </div>
-                        <div class="dashboard-card-body">
-                            <div class="mentor-card">
-                                <div class="mentor-avatar">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div class="mentor-info">
-                                    <div class="mentor-name">Priya Sharma</div>
-                                    <div class="mentor-domain">Entrepreneurship • IIM-B</div>
-                                    <div class="mentor-rating">
-                                        <i class="fas fa-star"></i> 4.9 (145 reviews)
-                                    </div>
-                                </div>
+                <!-- Section: Notifications -->
+                <section id="section-notifications" class="spa-section">
+                    <div class="notifications-list">
+                        <div class="notification-full-item unread">
+                            <div class="notification-img type-critical">
+                                <i class="fas fa-exclamation-triangle"></i>
                             </div>
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <span class="mentor-match"><i class="fas fa-bullseye"></i> 92% Match</span>
-                                <button class="btn btn-primary"
-                                    style="padding: 10px 20px; font-size: 13px;">Connect</button>
+                            <div class="notification-main">
+                                <span class="notif-time">2 hours ago • URGENT</span>
+                                <h4>Deadline Approaching: AICTE Skill Grant</h4>
+                                <p>The application window for the AICTE 2026 Skill Development Grant closes in 30 days.
+                                </p>
+                                <button class="btn btn-primary" style="font-size: 13px; padding: 10px 20px;"
+                                    onclick="showSection('applications')">Complete Now</button>
                             </div>
                         </div>
                     </div>
+                </section>
 
-                    <div class="dashboard-card mt-6">
-                        <div class="dashboard-card-header">
-                            <h3><i class="fas fa-bolt text-gold"></i> Quick Actions</h3>
+                <!-- Section: Settings -->
+                <section id="section-settings" class="spa-section">
+                    <div class="settings-grid">
+                        <div class="settings-nav">
+                            <div class="settings-nav-item active"><i class="fas fa-user-circle"></i> Profile Info</div>
+                            <div class="settings-nav-item"><i class="fas fa-shield-halved"></i> Security & Privacy</div>
                         </div>
-                        <div class="dashboard-card-body" style="display: grid; gap: 12px;">
-                            <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;"
-                                onclick="window.location.href='settings.html'">
-                                <i class="fas fa-id-card"></i> Update Profile Details
-                            </button>
-                            <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;"
-                                onclick="window.location.href='vault.html'">
-                                <i class="fas fa-upload"></i> Manage Documents
-                            </button>
-                            <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;"
-                                onclick="window.location.href='mentors.html'">
-                                <i class="fas fa-users"></i> Find Mentors
-                            </button>
+                        <div class="settings-panel">
+                            <div class="settings-section">
+                                <h3>Personal Information</h3>
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" class="form-control" value="Karri Dharma Teja" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Primary Email</label>
+                                    <input type="email" class="form-control" value="dharmateja@example.com">
+                                </div>
+                                <button class="btn btn-primary" onclick="alert('Settings saved!')">Save Changes</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
         </main>
     </div>
+
+    <script>
+        // SPA Navigation Logic
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.spa-section').forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            // Show target section
+            const targetSection = document.getElementById('section-' + sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active-section');
+            }
+
+            // Update sidebar highlighting
+            document.querySelectorAll('.nav-item a').forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeLink = document.getElementById('nav-' + sectionId);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            // Update Topbar Title/Subtitle
+            updateTopbar(sectionId);
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+
+            // Handle specific section initializations
+            if (sectionId === 'schemes' && typeof filterSchemes === 'function') {
+                filterSchemes();
+            }
+        }
+
+        function updateTopbar(sectionId) {
+            const topbar = document.getElementById('topbar-content');
+            let title = '';
+            let subtitle = '';
+
+            switch (sectionId) {
+                case 'dashboard':
+                    title = 'Welcome back, Dharma! 👋';
+                    subtitle = "Here's your personalized government services dashboard";
+                    break;
+                case 'schemes':
+                    title = 'Discover Schemes';
+                    subtitle = 'Personalized government benefits matched to your profile';
+                    break;
+                case 'applications':
+                    title = 'My Applications';
+                    subtitle = 'Track and manage your benefit applications and grants';
+                    break;
+                case 'vault':
+                    title = 'Document Vault';
+                    subtitle = 'Your secure, government-verified identity and document locker';
+                    break;
+                case 'mentors':
+                    title = 'Find Mentors';
+                    subtitle = 'Expert guidance matched to your life stage and goals';
+                    break;
+                case 'notifications':
+                    title = 'Notifications Hub';
+                    subtitle = 'Your personalized alert and message history';
+                    break;
+                case 'settings':
+                    title = 'Profile Settings';
+                    subtitle = 'Manage your profile data, privacy, and preferences';
+                    break;
+            }
+
+            if (topbar) {
+                topbar.innerHTML = `<h1>${title}</h1><p class="text-muted" style="margin: 0;">${subtitle}</p>`;
+            }
+        }
+
+        // Handle direct linking to sections if needed
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && ['dashboard', 'schemes', 'applications', 'vault', 'mentors', 'notifications', 'settings'].includes(hash)) {
+                showSection(hash);
+            }
+        });
+    </script>
 
     <!-- Demo Banner -->
     <div class="demo-banner">
