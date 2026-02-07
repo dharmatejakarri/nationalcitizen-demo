@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NationalCitizen | One Platform. One Tap. Everything.</title>
+  <meta name="description"
+    content="NationalCitizen - One platform, one tap access to 600+ government schemes. From birth to retirement, access all your benefits instantly. The future of citizen services.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #1d307f 0%, #0f1a4a 40%, #0a0a14 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 80%, rgba(253, 214, 0, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(255, 69, 0, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(3, 109, 51, 0.05) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 950px;
+      margin: 0 auto;
+      padding-top: 100px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 24px;
+      background: rgba(253, 214, 0, 0.12);
+      border: 1px solid rgba(253, 214, 0, 0.25);
+      border-radius: 50px;
+      color: var(--ap-gold);
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 32px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 800;
+      color: white;
+      line-height: 1.08;
+      margin-bottom: 28px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, var(--ap-gold) 0%, var(--ap-orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 750px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+    }
+
+    .hero-subtitle strong {
+      color: var(--ap-gold);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 70px;
+      padding: 36px 40px;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+    }
+
+    .stat-dark .stat-value {
+      font-size: 2.5rem;
+    }
+
+    /* Floating Elements */
+    .float-element {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .float-1 {
+      width: 450px;
+      height: 450px;
+      background: var(--ap-orange);
+      top: 5%;
+      right: -150px;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .float-2 {
+      width: 350px;
+      height: 350px;
+      background: var(--ap-gold);
+      bottom: 15%;
+      left: -120px;
+      animation: float 12s ease-in-out infinite reverse;
+    }
+
+    .float-3 {
+      width: 250px;
+      height: 250px;
+      background: var(--ap-green);
+      top: 45%;
+      right: 15%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    /* Problem Section */
+    .problem-section {
+      background: linear-gradient(180deg, #fefdfb 0%, #f8f9ff 100%);
+      padding: 100px 0;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .problem-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .problem-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .problem-card {
+      background: white;
+      border: 1px solid rgba(29, 48, 127, 0.08);
+      padding: 32px 28px;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(29, 48, 127, 0.04);
+    }
+
+    .problem-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(29, 48, 127, 0.12);
+      border-color: rgba(255, 69, 0, 0.2);
+    }
+
+    .problem-icon {
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(255, 69, 0, 0.1) 0%, rgba(220, 53, 69, 0.08) 100%);
+      border-radius: 18px;
+      margin: 0 auto 20px;
+      font-size: 28px;
+      color: var(--ap-orange);
+    }
+
+    .problem-value {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--ap-orange);
+      margin-bottom: 10px;
+      font-family: var(--font-display);
+    }
+
+    .problem-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--near-black);
+    }
+
+    /* Solution Section */
+    .solution-section {
+      background: white;
+      padding: 100px 0;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .solution-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .solution-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .solution-card {
+      background: var(--light-gray);
+      padding: 32px 28px;
+      border-radius: 20px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .solution-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-gold);
+      border-radius: 20px 20px 0 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .solution-card:hover::before {
+      opacity: 1;
+    }
+
+    .solution-card:hover {
+      background: white;
+      border-color: rgba(29, 48, 127, 0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(29, 48, 127, 0.1);
+    }
+
+    .solution-icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-primary);
+      border-radius: 14px;
+      color: white;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .solution-card:nth-child(2) .solution-icon {
+      background: var(--ap-orange);
+    }
+
+    .solution-card:nth-child(3) .solution-icon {
+      background: var(--ap-green);
+    }
+
+    .solution-card:nth-child(4) .solution-icon {
+      background: linear-gradient(135deg, var(--ap-gold), var(--ap-orange));
+    }
+
+    .solution-card:nth-child(5) .solution-icon {
+      background: #6366f1;
+    }
+
+    .solution-card:nth-child(6) .solution-icon {
+      background: #10b981;
+    }
+
+    .solution-card:nth-child(7) .solution-icon {
+      background: #f59e0b;
+    }
+
+    .solution-card:nth-child(8) .solution-icon {
+      background: #8b5cf6;
+    }
+
+    .solution-card h5 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--near-black);
+    }
+
+    /* Life Stages Section */
+    .stages-section {
+      background: linear-gradient(180deg, #1d307f 0%, #0a0a14 100%);
+      padding: 100px 0 80px;
+    }
+
+    .stages-container {
+      overflow-x: auto;
+      padding: 20px 0 40px;
+      margin: 0 -20px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ap-gold) rgba(255, 255, 255, 0.1);
+    }
+
+    .stages-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .stages-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    .stages-container::-webkit-scrollbar-thumb {
+      background: var(--ap-gold);
+      border-radius: 4px;
+    }
+
+    .stages-timeline {
+      display: flex;
+      gap: 20px;
+      min-width: max-content;
+      padding: 0 40px;
+    }
+
+    .stage-card {
+      width: 270px;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 28px 24px;
+      transition: all 0.3s ease;
+    }
+
+    .stage-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-6px);
+      border-color: var(--ap-gold);
+    }
+
+    .stage-age {
+      display: inline-block;
+      padding: 7px 16px;
+      background: var(--gradient-gold);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--near-black);
+      margin-bottom: 16px;
+    }
+
+    .stage-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .stage-desc {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .stage-schemes {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stage-schemes-count {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--ap-gold);
+    }
+
+    .stage-schemes-label {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px;
+    }
+
+    /* Impact Section */
+    .impact-section {
+      background: linear-gradient(180deg, #fefdfb 0%, white 100%);
+      padding: 100px 0;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .impact-card {
+      background: white;
+      border: 1px solid rgba(29, 48, 127, 0.08);
+      padding: 36px 28px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(29, 48, 127, 0.04);
+    }
+
+    .impact-value {
+      font-size: 3rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .impact-label {
+      font-size: 1rem;
+      color: var(--dark-gray);
+      font-weight: 500;
+    }
+
+    .investment-card {
+      background: var(--gradient-primary);
+      border-radius: 24px;
+      padding: 48px;
+      margin-top: 48px;
+    }
+
+    .investment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .investment-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .investment-item h5 {
+      color: var(--ap-gold);
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .investment-item .value {
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    .investment-item p {
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* Roadmap Section */
+    .roadmap-section {
+      background: white;
+      padding: 100px 0;
+    }
+
+    .roadmap-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .roadmap-item {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .roadmap-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 64px;
+      width: 3px;
+      height: calc(100% + 24px);
+      background: linear-gradient(180deg, var(--ap-gold) 0%, var(--ap-orange) 100%);
+      border-radius: 3px;
+    }
+
+    .roadmap-phase {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-gold);
+      border-radius: 50%;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--near-black);
+    }
+
+    .roadmap-content h4 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      color: var(--near-black);
+    }
+
+    .roadmap-duration {
+      color: var(--dark-gray);
+      font-weight: 500;
+    }
+
+    .roadmap-meta {
+      display: flex;
+      gap: 14px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .roadmap-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(29, 48, 127, 0.06);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ap-navy);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(160deg, #1d307f 0%, #0a0a14 100%);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(253, 214, 0, 0.12) 0%, transparent 60%);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .cta-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.15rem;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .cta-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+
+    .cta-stat-value {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--ap-gold);
+    }
+
+    .cta-stat-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    /* Tech Section */
+    .tech-section {
+      background: linear-gradient(180deg, #0a0a14 0%, #1d307f 100%);
+      padding: 80px 0;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .tech-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 22px 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .tech-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .tech-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .tech-name {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 500;
+    }
+
+    .integrations {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+
+    .integration-badge {
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* Footer */
+    .footer {
+      background: #080812;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 60px 0 32px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand h3 {
+      color: white;
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.7;
+    }
+
+    .footer-links h5 {
+      color: white;
+      margin-bottom: 18px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links a {
+      display: block;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 12px;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--ap-gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .demo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(255, 69, 0, 0.15);
+      border: 1px solid rgba(255, 69, 0, 0.3);
+      border-radius: 20px;
+      color: var(--ap-orange);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 56px;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(29, 48, 127, 0.06);
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ap-navy);
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .section-dark .section-tag {
+      background: rgba(253, 214, 0, 0.12);
+      color: var(--ap-gold);
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--dark-gray);
+      margin: 0;
+    }
+
+    .section-dark .section-header p {
+      color: rgba(255, 255, 255, 0.75);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container flex-between">
+      <a href="#" class="navbar-brand">
+        <i class="fas fa-fingerprint"></i>
+        NationalCitizen
+      </a>
+      <ul class="nav-links">
+        <li><a href="#problem" class="nav-link">The Challenge</a></li>
+        <li><a href="#solution" class="nav-link">Our Solution</a></li>
+        <li><a href="#journey" class="nav-link">Life Stages</a></li>
+        <li><a href="#impact" class="nav-link">Impact</a></li>
+        <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+        <li><a href="dashboard.html" class="btn btn-accent">Explore Demo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="float-element float-1"></div>
+    <div class="float-element float-2"></div>
+    <div class="float-element float-3"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-flag"></i>
+          Andhra Pradesh Pilot Initiative
+        </div>
+
+        <h1 class="hero-title">
+          One Platform.<br>
+          <span class="highlight">One Tap.</span><br>
+          Everything You Need.
+        </h1>
+
+        <p class="hero-subtitle">
+          Imagine a single platform where <strong>every government benefit</strong> finds you—not the other way around.
+          From the moment you're born to your golden years, NationalCitizen delivers <strong>600+ schemes</strong> right
+          to your fingertips. <strong>One tap. Zero hassle.</strong>
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#pilot" class="btn btn-accent btn-lg">
+            <i class="fas fa-handshake"></i>
+            Partner With Us
+          </a>
+          <a href="dashboard.html" class="btn btn-secondary btn-lg"
+            style="border-color: rgba(255,255,255,0.4); color: white;">
+            <i class="fas fa-desktop"></i>
+            Explore Demo
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat stat-dark">
+            <div class="stat-value">600+</div>
+            <div class="stat-label">Government Schemes</div>
+          </div>
+          <div class="stat stat-dark">
+            <div class="stat-value">9</div>
+            <div class="stat-label">Life Stages Covered</div>
+          </div>
+          <div class="stat stat-dark">
+            <div class="stat-value">70%</div>
+            <div class="stat-label">Time Saved</div>
+          </div>
+          <div class="stat stat-dark">
+            <div class="stat-value">24/7</div>
+            <div class="stat-label">AI Assistance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="problem-section" id="problem">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <i class="fas fa-exclamation-circle"></i>
+          The Challenge
+        </div>
+        <h2>Why Citizens Struggle to Access <span class="text-orange">Their Benefits</span></h2>
+        <p>Despite hundreds of government schemes, most citizens miss out on benefits they rightfully deserve.</p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card reveal">
+          <div class="problem-icon">
+            <i class="fas fa-puzzle-piece"></i>
+          </div>
+          <div class="problem-value">600+</div>
+          <h4>Scattered Schemes</h4>
+          <p class="text-muted">Government schemes spread across dozens of different websites and departments</p>
+        </div>
+
+        <div class="problem-card reveal">
+          <div class="problem-icon">
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <div class="problem-value">80%</div>
+          <h4>Lack of Awareness</h4>
+          <p class="text-muted">Citizens simply don't know which schemes they're eligible for</p>
+        </div>
+
+        <div class="problem-card reveal">
+          <div class="problem-icon">
+            <i class="fas fa-hourglass-half"></i>
+          </div>
+          <div class="problem-value">30+ Days</div>
+          <h4>Complex Processes</h4>
+          <p class="text-muted">Average time to complete a single scheme application with paperwork</p>
+        </div>
+
+        <div class="problem-card reveal">
+          <div class="problem-icon">
+            <i class="fas fa-rupee-sign"></i>
+          </div>
+          <div class="problem-value">₹2-3L Cr</div>
+          <h4>Annual Loss</h4>
+          <p class="text-muted">Benefits left unclaimed every year due to low scheme penetration</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <div
+          style="display: inline-block; padding: 20px 36px; background: linear-gradient(135deg, rgba(255, 69, 0, 0.06) 0%, rgba(29, 48, 127, 0.04) 100%); border: 1px solid rgba(255, 69, 0, 0.12); border-radius: 16px;">
+          <p style="color: var(--near-black); font-size: 1.05rem; margin: 0;">
+            <strong style="color: var(--ap-orange);">The Reality:</strong> The average citizen loses <strong>₹10,000+
+              every year</strong> in missed benefits, deadlines, and opportunities they never knew existed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="solution-section" id="solution">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <i class="fas fa-lightbulb"></i>
+          Our Solution
+        </div>
+        <h2>One Platform. <span class="text-gradient">One Tap.</span> Everything.</h2>
+        <p>Your lifelong companion for all government services—from birth certificate to pension.</p>
+      </div>
+
+      <div class="solution-grid">
+        <div class="solution-card reveal">
+          <div class="solution-icon">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          <h5>Connected from Day One</h5>
+          <p class="text-muted">Your profile is created automatically—every citizen journey starts from birth with zero
+            effort</p>
+        </div>
+
+        <div class="solution-card reveal">
+          <div class="solution-icon">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <h5>All Documents in One Place</h5>
+          <p class="text-muted">PAN, passport, voter ID, education records—all your credentials securely unified</p>
+        </div>
+
+        <div class="solution-card reveal">
+          <div class="solution-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h5>AI-Powered Matching</h5>
+          <p class="text-muted">Smart algorithms scan 600+ schemes to find exactly what you're eligible for</p>
+        </div>
+
+        <div class="solution-card reveal">
+          <div class="solution-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h5>Mentor Guidance</h5>
+          <p class="text-muted">Real human mentors to guide you at critical life decisions and career stages</p>
+        </div>
+
+        <div class="solution-card reveal">
+          <div class="solution-icon">
+            <i class="fas fa-hand-pointer"></i>
+          </div>
+          <h5>One-Tap Applications</h5>
+          <p class="text-muted">Pre-filled forms with your data—apply to any scheme in minutes, not days</p>
+        </div>
+
+        <div class="solution-card reveal">
+          <div class="solution-icon">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h5>Smart Reminders</h5>
+          <p class="text-muted">Never miss a deadline—get proactive alerts for renewals and opportunities</p>
+        </div>
+
+        <div class="solution-card reveal">
+          <div class="solution-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h5>Track Everything</h5>
+          <p class="text-muted">Real-time status on all your applications and benefits in one dashboard</p>
+        </div>
+
+        <div class="solution-card reveal">
+          <div class="solution-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h5>Life Path Guidance</h5>
+          <p class="text-muted">Personalized recommendations for education, career, and entrepreneurship</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Life Stages Journey -->
+  <section class="stages-section section-dark" id="journey">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <i class="fas fa-route"></i>
+          Life Stages
+        </div>
+        <h2>With You at <span class="text-gradient">Every Stage of Life</span></h2>
+        <p>From your first breath to your golden years, NationalCitizen ensures you never miss a benefit.</p>
+      </div>
+    </div>
+
+    <div class="stages-container">
+      <div class="stages-timeline">
+        <div class="stage-card">
+          <span class="stage-age">0-5 Years</span>
+          <h4 class="stage-title">Newborn & Infant</h4>
+          <p class="stage-desc">Birth certificate, Aadhaar enrollment, nutrition programs, vaccinations, ICDS benefits
+          </p>
+          <div class="stage-schemes">
+            <span class="stage-schemes-count">45+</span>
+            <span class="stage-schemes-label">Schemes Available</span>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-age">5-15 Years</span>
+          <h4 class="stage-title">School Age</h4>
+          <p class="stage-desc">School admissions, RTE benefits, scholarships, mid-day meals, uniform allowances</p>
+          <div class="stage-schemes">
+            <span class="stage-schemes-count">60+</span>
+            <span class="stage-schemes-label">Schemes Available</span>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-age">15-18 Years</span>
+          <h4 class="stage-title">Adolescent</h4>
+          <p class="stage-desc">Stream selection guidance, board exam support, skill development, career counseling</p>
+          <div class="stage-schemes">
+            <span class="stage-schemes-count">75+</span>
+            <span class="stage-schemes-label">Schemes Available</span>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-age">18-23 Years</span>
+          <h4 class="stage-title">Higher Education</h4>
+          <p class="stage-desc">College matching, study loans, scholarships, skill certifications, internships</p>
+          <div class="stage-schemes">
+            <span class="stage-schemes-count">90+</span>
+            <span class="stage-schemes-label">Schemes Available</span>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-age">23-30 Years</span>
+          <h4 class="stage-title">Career Launch</h4>
+          <p class="stage-desc">Job matching, startup grants, MUDRA loans, housing assistance, marriage benefits</p>
+          <div class="stage-schemes">
+            <span class="stage-schemes-count">100+</span>
+            <span class="stage-schemes-label">Schemes Available</span>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-age">30-50 Years</span>
+          <h4 class="stage-title">Mid-Career</h4>
+          <p class="stage-desc">Home loans, insurance, tax benefits, children's education, business expansion</p>
+          <div class="stage-schemes">
+            <span class="stage-schemes-count">85+</span>
+            <span class="stage-schemes-label">Schemes Available</span>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-age">50-60 Years</span>
+          <h4 class="stage-title">Pre-Retirement</h4>
+          <p class="stage-desc">Pension planning, NPS optimization, health checkups, senior preparation</p>
+          <div class="stage-schemes">
+            <span class="stage-schemes-count">70+</span>
+            <span class="stage-schemes-label">Schemes Available</span>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-age">60-70 Years</span>
+          <h4 class="stage-title">Early Retirement</h4>
+          <p class="stage-desc">Pension activation, senior citizen benefits, healthcare subsidies, concessions</p>
+          <div class="stage-schemes">
+            <span class="stage-schemes-count">65+</span>
+            <span class="stage-schemes-label">Schemes Available</span>
+          </div>
+        </div>
+
+        <div class="stage-card">
+          <span class="stage-age">70+ Years</span>
+          <h4 class="stage-title">Senior Citizen</h4>
+          <p class="stage-desc">Enhanced pensions, Ayushman Bharat, caregiver support, legacy planning</p>
+          <div class="stage-schemes">
+            <span class="stage-schemes-count">55+</span>
+            <span class="stage-schemes-label">Schemes Available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container text-center" style="margin-top: 24px;">
+      <p style="color: rgba(255,255,255,0.6); font-size: 14px;">
+        <i class="fas fa-hand-point-right"></i> Scroll to explore all 9 life stages
+      </p>
+    </div>
+  </section>
+
+  <!-- Impact Section -->
+  <section class="impact-section" id="impact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <i class="fas fa-chart-bar"></i>
+          Impact & Returns
+        </div>
+        <h2>Measurable <span class="text-gradient">Transformation</span></h2>
+        <p>Projected outcomes based on comprehensive modeling across user adoption and efficiency gains.</p>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-card reveal">
+          <div class="impact-value">300M</div>
+          <div class="impact-label">Citizens Served by Year 3</div>
+        </div>
+
+        <div class="impact-card reveal">
+          <div class="impact-value">70%</div>
+          <div class="impact-label">Scheme Penetration Rate</div>
+        </div>
+
+        <div class="impact-card reveal">
+          <div class="impact-value">₹20K</div>
+          <div class="impact-label">Average Annual Benefit/Citizen</div>
+        </div>
+
+        <div class="impact-card reveal">
+          <div class="impact-value">7 Days</div>
+          <div class="impact-label">Application Processing Time</div>
+        </div>
+
+        <div class="impact-card reveal">
+          <div class="impact-value">40%</div>
+          <div class="impact-label">Admin Cost Reduction</div>
+        </div>
+
+        <div class="impact-card reveal">
+          <div class="impact-value">97%</div>
+          <div class="impact-label">3-Year ROI</div>
+        </div>
+      </div>
+
+      <div class="investment-card">
+        <div class="investment-grid">
+          <div class="investment-item">
+            <h5>Total Investment</h5>
+            <div class="value">₹320 Cr</div>
+            <p>Over 3 years</p>
+          </div>
+          <div class="investment-item">
+            <h5>Total Returns</h5>
+            <div class="value">₹630 Cr</div>
+            <p>Benefits generated</p>
+          </div>
+          <div class="investment-item">
+            <h5>Net Benefit</h5>
+            <div class="value">₹310 Cr</div>
+            <p>Positive impact</p>
+          </div>
+        </div>
+        <div class="text-center" style="margin-top: 32px;">
+          <span
+            style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; background: var(--ap-gold); border-radius: 24px; font-size: 14px; font-weight: 700; color: var(--near-black);">
+            <i class="fas fa-check-circle"></i> Break-even: Month 18-20
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Section -->
+  <section class="tech-section section-dark" id="technology">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <i class="fas fa-shield-alt"></i>
+          Technology
+        </div>
+        <h2>Enterprise-Grade, <span class="text-gradient">Citizen-Ready</span></h2>
+        <p>Built for security, scale, and simplicity.</p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-icon">🔐</div>
+          <div class="tech-name">Aadhaar KYC</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🧠</div>
+          <div class="tech-name">AI Matching</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">☁️</div>
+          <div class="tech-name">Cloud Native</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🛡️</div>
+          <div class="tech-name">ISO 27001</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">📱</div>
+          <div class="tech-name">Mobile First</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🌐</div>
+          <div class="tech-name">Multi-Language</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">📊</div>
+          <div class="tech-name">Real Analytics</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">♿</div>
+          <div class="tech-name">Accessible</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🔄</div>
+          <div class="tech-name">Live Sync</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon">🚀</div>
+          <div class="tech-name">99.9% Uptime</div>
+        </div>
+      </div>
+
+      <div class="integrations">
+        <span class="integration-badge">UIDAI (Aadhaar)</span>
+        <span class="integration-badge">NSDL (PAN)</span>
+        <span class="integration-badge">Passport Seva</span>
+        <span class="integration-badge">DigiLocker</span>
+        <span class="integration-badge">State Portals</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section class="roadmap-section" id="roadmap">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">
+          <i class="fas fa-road"></i>
+          Roadmap
+        </div>
+        <h2>From Pilot to <span class="text-gradient">National Scale</span></h2>
+        <p>A phased approach that ensures quality at every step.</p>
+      </div>
+
+      <div class="roadmap-container">
+        <div class="roadmap-item reveal">
+          <div class="roadmap-phase">1</div>
+          <div class="roadmap-content">
+            <h4>MVP Launch <span class="roadmap-duration">• 6-9 Months</span></h4>
+            <p class="text-muted">Core platform with Aadhaar authentication, 200+ central schemes, and basic life-stage
+              personalization. Pilot in 3 metro cities.</p>
+            <div class="roadmap-meta">
+              <span class="roadmap-tag"><i class="fas fa-users"></i> 5M Users</span>
+              <span class="roadmap-tag"><i class="fas fa-list"></i> 200 Schemes</span>
+              <span class="roadmap-tag"><i class="fas fa-rupee-sign"></i> ₹90Cr</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-item reveal">
+          <div class="roadmap-phase">2</div>
+          <div class="roadmap-content">
+            <h4>State Expansion <span class="roadmap-duration">• 6-8 Months</span></h4>
+            <p class="text-muted">Add state-level schemes, mentor matching, education recommendations, and enhanced AI.
+              Coverage across all tier-1 and tier-2 cities.</p>
+            <div class="roadmap-meta">
+              <span class="roadmap-tag"><i class="fas fa-users"></i> 100M Users</span>
+              <span class="roadmap-tag"><i class="fas fa-list"></i> 500 Schemes</span>
+              <span class="roadmap-tag"><i class="fas fa-rupee-sign"></i> ₹100Cr</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-item reveal">
+          <div class="roadmap-phase">3</div>
+          <div class="roadmap-content">
+            <h4>National Coverage <span class="roadmap-duration">• 6-8 Months</span></h4>
+            <p class="text-muted">Full AI personalization, entrepreneurship ecosystem, job marketplace, pension
+              planning. Complete urban and rural coverage.</p>
+            <div class="roadmap-meta">
+              <span class="roadmap-tag"><i class="fas fa-users"></i> 300M Users</span>
+              <span class="roadmap-tag"><i class="fas fa-list"></i> 600+ Schemes</span>
+              <span class="roadmap-tag"><i class="fas fa-rupee-sign"></i> ₹130Cr</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="pilot">
+    <div class="container">
+      <div class="cta-content">
+        <div class="hero-badge" style="margin-bottom: 24px;">
+          <i class="fas fa-map-marker-alt"></i>
+          Andhra Pradesh Pilot
+        </div>
+
+        <h2 class="cta-title">
+          Be the First to <span class="text-gradient">Transform Citizens' Lives</span>
+        </h2>
+
+        <p class="cta-subtitle">
+          Partner with us to launch NationalCitizen in Andhra Pradesh. Let's set the benchmark for how government serves
+          its people.
+        </p>
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="mailto:pilot@nationalcitizen.in" class="btn btn-accent btn-lg">
+            <i class="fas fa-envelope"></i>
+            Request Partnership
+          </a>
+          <a href="#" class="btn btn-lg"
+            style="background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3);">
+            <i class="fas fa-download"></i>
+            Download Business Case
+          </a>
+        </div>
+
+        <div class="cta-stats">
+          <div class="text-center">
+            <div class="cta-stat-value">5 Crore+</div>
+            <div class="cta-stat-label">AP Citizens to Benefit</div>
+          </div>
+          <div class="text-center">
+            <div class="cta-stat-value">₹1500 Cr</div>
+            <div class="cta-stat-label">Annual Benefits Unlocked</div>
+          </div>
+          <div class="text-center">
+            <div class="cta-stat-value">3x</div>
+            <div class="cta-stat-label">Scheme Penetration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><i class="fas fa-fingerprint"></i> NationalCitizen</h3>
+          <p>One app for every government service. From birth to senior citizenship, we're with you at every step.</p>
+          <div class="demo-badge" style="margin-top: 16px;">
+            <i class="fas fa-flask"></i>
+            Demo Version
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h5>Platform</h5>
+          <a href="#solution">Features</a>
+          <a href="#journey">Life Stages</a>
+          <a href="#technology">Technology</a>
+          <a href="dashboard.html">Demo</a>
+        </div>
+
+        <div class="footer-links">
+          <h5>Resources</h5>
+          <a href="#">Business Case</a>
+          <a href="#">Technical Specs</a>
+          <a href="#">PRD Document</a>
+          <a href="#">API Docs</a>
+        </div>
+
+        <div class="footer-links">
+          <h5>Contact</h5>
+          <a href="mailto:pilot@nationalcitizen.in">pilot@nationalcitizen.in</a>
+          <a href="#">Schedule Meeting</a>
+          <a href="#">Press Inquiries</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 NationalCitizen Platform • A Strategic Digital India Initiative • <span
+            style="color: var(--ap-gold);">DEMO</span></p>
+        <div style="display: flex; gap: 16px;">
+          <a href="#" style="color: rgba(255,255,255,0.5);"><i class="fab fa-twitter"></i></a>
+          <a href="#" style="color: rgba(255,255,255,0.5);"><i class="fab fa-linkedin"></i></a>
+          <a href="#" style="color: rgba(255,255,255,0.5);"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if (elementTop < windowHeight - revealPoint) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      navbar.style.background = window.scrollY > 80
+        ? 'rgba(10, 10, 20, 0.95)'
+        : 'rgba(10, 10, 20, 0.8)';
+    });
+  </script>
+</body>
+
+</html>

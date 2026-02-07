@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Schemes | NationalCitizen</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background: var(--light-gray);
+        }
+
+        /* Page Layout */
+        .page-wrapper {
+            min-height: 100vh;
+            padding: 100px 0 60px;
+        }
+
+        /* Fixed Header */
+        .page-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: white;
+            border-bottom: 1px solid var(--gray);
+            padding: 16px 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--ap-navy);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .header-nav a {
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .header-nav a:hover {
+            color: var(--ap-navy);
+        }
+
+        /* Filters Section */
+        .filters-bar {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            background: var(--light-gray);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            background: none;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box i {
+            color: var(--dark-gray);
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+
+        .filter-select {
+            padding: 10px 16px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .filter-tag {
+            padding: 8px 16px;
+            background: var(--light-gray);
+            border: 1px solid transparent;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--ap-navy);
+            color: white;
+        }
+
+        /* Results Header */
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .results-count {
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+
+        .results-count strong {
+            color: var(--ap-navy);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 8px;
+        }
+
+        .view-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gray);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+        }
+
+        .view-btn.active {
+            background: var(--ap-navy);
+            color: white;
+            border-color: var(--ap-navy);
+        }
+
+        /* Scheme Cards Grid */
+        .schemes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 1200px) {
+            .schemes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .schemes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scheme-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .scheme-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scheme-card-top {
+            padding: 24px;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .scheme-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .scheme-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .scheme-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--near-black);
+            margin-bottom: 4px;
+        }
+
+        .scheme-card-ministry {
+            font-size: 13px;
+            color: var(--dark-gray);
+        }
+
+        .scheme-match-bar {
+            margin-bottom: 16px;
+        }
+
+        .scheme-match-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .scheme-match-label {
+            font-size: 13px;
+            color: var(--dark-gray);
+        }
+
+        .scheme-match-value {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .scheme-match-value.high {
+            color: var(--ap-green);
+        }
+
+        .scheme-match-value.medium {
+            color: var(--ap-orange);
+        }
+
+        .scheme-match-value.low {
+            color: var(--dark-gray);
+        }
+
+        .match-progress {
+            height: 6px;
+            background: var(--gray);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .match-progress-fill {
+            height: 100%;
+            border-radius: 6px;
+        }
+
+        .match-progress-fill.high {
+            background: var(--ap-green);
+        }
+
+        .match-progress-fill.medium {
+            background: var(--ap-orange);
+        }
+
+        .match-progress-fill.low {
+            background: var(--dark-gray);
+        }
+
+        .scheme-card-desc {
+            font-size: 14px;
+            color: var(--dark-gray);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .scheme-card-meta {
+            display: flex;
+            gap: 16px;
+            padding: 16px 24px;
+            background: var(--light-gray);
+        }
+
+        .scheme-meta-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .scheme-meta-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--near-black);
+        }
+
+        .scheme-meta-value.benefit {
+            color: var(--ap-green);
+        }
+
+        .scheme-meta-label {
+            font-size: 11px;
+            color: var(--dark-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .scheme-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-top: 1px solid var(--gray);
+        }
+
+        .scheme-docs {
+            font-size: 13px;
+            color: var(--dark-gray);
+        }
+
+        .scheme-docs i {
+            color: var(--ap-green);
+            margin-right: 6px;
+        }
+
+        /* Category Colors */
+        .cat-entrepreneur {
+            background: rgba(255, 69, 0, 0.1);
+            color: var(--ap-orange);
+        }
+
+        .cat-education {
+            background: rgba(29, 48, 127, 0.1);
+            color: var(--ap-navy);
+        }
+
+        .cat-health {
+            background: rgba(3, 109, 51, 0.1);
+            color: var(--ap-green);
+        }
+
+        .cat-housing {
+            background: rgba(253, 214, 0, 0.2);
+            color: var(--near-black);
+        }
+
+        .cat-agriculture {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .cat-pension {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .modal-header h3 {
+            margin: 0;
+        }
+
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--light-gray);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-footer {
+            padding: 20px 24px;
+            border-top: 1px solid var(--gray);
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        /* Info List */
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list i {
+            width: 20px;
+            color: var(--ap-green);
+            margin-top: 2px;
+        }
+
+        /* Demo Banner */
+        .demo-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 32px;
+            background: var(--near-black);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .demo-banner p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .demo-banner strong {
+            color: var(--ap-gold);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="header-brand">
+                    <i class="fas fa-fingerprint"></i>
+                    NationalCitizen
+                </a>
+                <nav class="header-nav">
+                    <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="schemes.html" style="color: var(--ap-orange);"><i class="fas fa-search"></i> Schemes</a>
+                    <a href="dashboard.html"><i class="fas fa-file-alt"></i> Applications</a>
+                    <a href="dashboard.html" class="btn btn-primary" style="padding: 10px 20px;"><i
+                            class="fas fa-user"></i> Dharma T.</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="page-wrapper">
+        <div class="container">
+            <!-- Heading -->
+            <div style="margin-bottom: 24px;">
+                <h1 style="margin-bottom: 8px;">Discover Government Schemes</h1>
+                <p class="text-muted" style="margin: 0;">Find and apply to schemes you're eligible for based on your
+                    profile</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-bar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search schemes by name, ministry, or keyword..." id="searchInput">
+                </div>
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label>Category:</label>
+                        <button class="filter-tag active">All</button>
+                        <button class="filter-tag">Entrepreneur</button>
+                        <button class="filter-tag">Education</button>
+                        <button class="filter-tag">Health</button>
+                        <button class="filter-tag">Housing</button>
+                        <button class="filter-tag">Agriculture</button>
+                        <button class="filter-tag">Pension</button>
+                    </div>
+                    <div style="flex: 1;"></div>
+                    <div class="filter-group">
+                        <label>Sort by:</label>
+                        <select class="filter-select">
+                            <option>Match Score (High to Low)</option>
+                            <option>Benefit Amount</option>
+                            <option>Deadline</option>
+                            <option>Recently Added</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Header -->
+            <div class="results-header">
+                <div class="results-count">
+                    Showing <strong>47 schemes</strong> matching your profile
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active"><i class="fas fa-grid-2"></i></button>
+                    <button class="view-btn"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+
+            <!-- Schemes Grid -->
+            <div class="schemes-grid">
+                <!-- Scheme 1 -->
+                <div class="scheme-card">
+                    <div class="scheme-card-top">
+                        <div class="scheme-card-header">
+                            <div class="scheme-card-icon cat-entrepreneur">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div>
+                                <h4 class="scheme-card-title">Pradhan Mantri Mudra Yojana</h4>
+                                <p class="scheme-card-ministry">Ministry of Finance • MUDRA</p>
+                            </div>
+                        </div>
+                        <div class="scheme-match-bar">
+                            <div class="scheme-match-header">
+                                <span class="scheme-match-label">Eligibility Match</span>
+                                <span class="scheme-match-value high">95%</span>
+                            </div>
+                            <div class="match-progress">
+                                <div class="match-progress-fill high" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <p class="scheme-card-desc">Non-collateral loans up to ₹10 lakhs for business startups and MSMEs
+                            under Shishu, Kishore, and Tarun categories.</p>
+                    </div>
+                    <div class="scheme-card-meta">
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value benefit">₹10L</div>
+                            <div class="scheme-meta-label">Max Benefit</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">45 days</div>
+                            <div class="scheme-meta-label">Deadline</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">78%</div>
+                            <div class="scheme-meta-label">Approval Rate</div>
+                        </div>
+                    </div>
+                    <div class="scheme-card-footer">
+                        <span class="scheme-docs"><i class="fas fa-check-circle"></i> 5/7 docs ready</span>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;"
+                            onclick="openModal()">Apply Now</button>
+                    </div>
+                </div>
+
+                <!-- Scheme 2 -->
+                <div class="scheme-card">
+                    <div class="scheme-card-top">
+                        <div class="scheme-card-header">
+                            <div class="scheme-card-icon cat-entrepreneur">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h4 class="scheme-card-title">Startup India Registration</h4>
+                                <p class="scheme-card-ministry">DPIIT • Central Government</p>
+                            </div>
+                        </div>
+                        <div class="scheme-match-bar">
+                            <div class="scheme-match-header">
+                                <span class="scheme-match-label">Eligibility Match</span>
+                                <span class="scheme-match-value high">92%</span>
+                            </div>
+                            <div class="match-progress">
+                                <div class="match-progress-fill high" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                        <p class="scheme-card-desc">Official startup recognition with tax benefits (3-year exemption),
+                            easier compliance, and access to government tender priorities.</p>
+                    </div>
+                    <div class="scheme-card-meta">
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value benefit">Tax Free</div>
+                            <div class="scheme-meta-label">3 Years</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">Open</div>
+                            <div class="scheme-meta-label">Always</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">85%</div>
+                            <div class="scheme-meta-label">Approval Rate</div>
+                        </div>
+                    </div>
+                    <div class="scheme-card-footer">
+                        <span class="scheme-docs"><i class="fas fa-check-circle"></i> 6/8 docs ready</span>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply Now</button>
+                    </div>
+                </div>
+
+                <!-- Scheme 3 -->
+                <div class="scheme-card">
+                    <div class="scheme-card-top">
+                        <div class="scheme-card-header">
+                            <div class="scheme-card-icon cat-education">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="scheme-card-title">AICTE Skill Development Grant</h4>
+                                <p class="scheme-card-ministry">Ministry of Education • AICTE</p>
+                            </div>
+                        </div>
+                        <div class="scheme-match-bar">
+                            <div class="scheme-match-header">
+                                <span class="scheme-match-label">Eligibility Match</span>
+                                <span class="scheme-match-value medium">87%</span>
+                            </div>
+                            <div class="match-progress">
+                                <div class="match-progress-fill medium" style="width: 87%;"></div>
+                            </div>
+                        </div>
+                        <p class="scheme-card-desc">Financial assistance for skill development courses and technical
+                            certifications for engineering graduates.</p>
+                    </div>
+                    <div class="scheme-card-meta">
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value benefit">₹50K</div>
+                            <div class="scheme-meta-label">Grant Amount</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">30 days</div>
+                            <div class="scheme-meta-label">Deadline</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">72%</div>
+                            <div class="scheme-meta-label">Approval Rate</div>
+                        </div>
+                    </div>
+                    <div class="scheme-card-footer">
+                        <span class="scheme-docs"><i class="fas fa-check-circle"></i> 4/6 docs ready</span>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply Now</button>
+                    </div>
+                </div>
+
+                <!-- Scheme 4 -->
+                <div class="scheme-card">
+                    <div class="scheme-card-top">
+                        <div class="scheme-card-header">
+                            <div class="scheme-card-icon cat-housing">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div>
+                                <h4 class="scheme-card-title">PM Awas Yojana (Urban)</h4>
+                                <p class="scheme-card-ministry">Ministry of Housing • Central</p>
+                            </div>
+                        </div>
+                        <div class="scheme-match-bar">
+                            <div class="scheme-match-header">
+                                <span class="scheme-match-label">Eligibility Match</span>
+                                <span class="scheme-match-value medium">78%</span>
+                            </div>
+                            <div class="match-progress">
+                                <div class="match-progress-fill medium" style="width: 78%;"></div>
+                            </div>
+                        </div>
+                        <p class="scheme-card-desc">Interest subsidy on home loans for first-time home buyers in urban
+                            areas under EWS/LIG/MIG categories.</p>
+                    </div>
+                    <div class="scheme-card-meta">
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value benefit">₹2.5L</div>
+                            <div class="scheme-meta-label">Max Subsidy</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">60 days</div>
+                            <div class="scheme-meta-label">Deadline</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">68%</div>
+                            <div class="scheme-meta-label">Approval Rate</div>
+                        </div>
+                    </div>
+                    <div class="scheme-card-footer">
+                        <span class="scheme-docs"><i class="fas fa-times-circle" style="color: var(--ap-orange);"></i>
+                            3/8 docs ready</span>
+                        <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 13px;">View
+                            Details</button>
+                    </div>
+                </div>
+
+                <!-- Scheme 5 -->
+                <div class="scheme-card">
+                    <div class="scheme-card-top">
+                        <div class="scheme-card-header">
+                            <div class="scheme-card-icon cat-health">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div>
+                                <h4 class="scheme-card-title">Ayushman Bharat (PMJAY)</h4>
+                                <p class="scheme-card-ministry">Ministry of Health • NHA</p>
+                            </div>
+                        </div>
+                        <div class="scheme-match-bar">
+                            <div class="scheme-match-header">
+                                <span class="scheme-match-label">Eligibility Match</span>
+                                <span class="scheme-match-value high">90%</span>
+                            </div>
+                            <div class="match-progress">
+                                <div class="match-progress-fill high" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <p class="scheme-card-desc">Free health insurance coverage up to ₹5 lakhs per family per year
+                            for secondary and tertiary hospitalization.</p>
+                    </div>
+                    <div class="scheme-card-meta">
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value benefit">₹5L</div>
+                            <div class="scheme-meta-label">Coverage</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">Open</div>
+                            <div class="scheme-meta-label">Always</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">82%</div>
+                            <div class="scheme-meta-label">Approval Rate</div>
+                        </div>
+                    </div>
+                    <div class="scheme-card-footer">
+                        <span class="scheme-docs"><i class="fas fa-check-circle"></i> All docs ready</span>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply Now</button>
+                    </div>
+                </div>
+
+                <!-- Scheme 6 -->
+                <div class="scheme-card">
+                    <div class="scheme-card-top">
+                        <div class="scheme-card-header">
+                            <div class="scheme-card-icon cat-pension">
+                                <i class="fas fa-piggy-bank"></i>
+                            </div>
+                            <div>
+                                <h4 class="scheme-card-title">Atal Pension Yojana</h4>
+                                <p class="scheme-card-ministry">PFRDA • Central Government</p>
+                            </div>
+                        </div>
+                        <div class="scheme-match-bar">
+                            <div class="scheme-match-header">
+                                <span class="scheme-match-label">Eligibility Match</span>
+                                <span class="scheme-match-value high">94%</span>
+                            </div>
+                            <div class="match-progress">
+                                <div class="match-progress-fill high" style="width: 94%;"></div>
+                            </div>
+                        </div>
+                        <p class="scheme-card-desc">Guaranteed pension of ₹1,000 to ₹5,000 per month after 60 years for
+                            unorganized sector workers.</p>
+                    </div>
+                    <div class="scheme-card-meta">
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value benefit">₹5K/mo</div>
+                            <div class="scheme-meta-label">Max Pension</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">Open</div>
+                            <div class="scheme-meta-label">Always</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">95%</div>
+                            <div class="scheme-meta-label">Approval Rate</div>
+                        </div>
+                    </div>
+                    <div class="scheme-card-footer">
+                        <span class="scheme-docs"><i class="fas fa-check-circle"></i> All docs ready</span>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Enroll Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-8" style="padding-bottom: 80px;">
+                <button class="btn btn-secondary btn-lg">
+                    <i class="fas fa-plus"></i> Load More Schemes (41 remaining)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scheme Detail Modal -->
+    <div class="modal-overlay" id="schemeModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-rocket text-orange"></i> Pradhan Mantri Mudra Yojana</h3>
+                <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+                    <div>
+                        <span class="badge badge-orange">Entrepreneurship</span>
+                        <span class="badge badge-success" style="margin-left: 8px;">95% Match</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 1.5rem; font-weight: 800; color: var(--ap-green);">Up to ₹10 Lakhs</div>
+                        <div style="font-size: 13px; color: var(--dark-gray);">Non-collateral loan</div>
+                    </div>
+                </div>
+
+                <h5 style="margin-bottom: 12px;">About this Scheme</h5>
+                <p style="color: var(--dark-gray); margin-bottom: 24px;">
+                    MUDRA provides loans at low interest rates to micro-enterprises and individuals to help them setup
+                    or expand their business. The scheme is divided into three products based on the growth stage:
+                    Shishu (up to ₹50,000), Kishore (₹50,000 to ₹5 lakh), and Tarun (₹5 lakh to ₹10 lakh).
+                </p>
+
+                <h5 style="margin-bottom: 12px;">Eligibility Criteria</h5>
+                <ul class="info-list" style="margin-bottom: 24px;">
+                    <li><i class="fas fa-check"></i> Age between 18-65 years</li>
+                    <li><i class="fas fa-check"></i> Indian citizen</li>
+                    <li><i class="fas fa-check"></i> Valid business plan or existing micro-enterprise</li>
+                    <li><i class="fas fa-check"></i> No existing loan defaults</li>
+                    <li><i class="fas fa-check"></i> Valid KYC documents (Aadhaar, PAN)</li>
+                </ul>
+
+                <h5 style="margin-bottom: 12px;">Documents Required</h5>
+                <ul class="info-list">
+                    <li><i class="fas fa-check"></i> <span><strong>Aadhaar Card</strong> - Available in vault</span>
+                    </li>
+                    <li><i class="fas fa-check"></i> <span><strong>PAN Card</strong> - Available in vault</span></li>
+                    <li><i class="fas fa-check"></i> <span><strong>Address Proof</strong> - Available in vault</span>
+                    </li>
+                    <li><i class="fas fa-check"></i> <span><strong>Bank Statement (6 months)</strong> - Available in
+                            vault</span></li>
+                    <li><i class="fas fa-check"></i> <span><strong>Passport Photo</strong> - Available in vault</span>
+                    </li>
+                    <li><i class="fas fa-times" style="color: var(--ap-orange);"></i> <span><strong>Business
+                                Plan</strong> - Upload required</span></li>
+                    <li><i class="fas fa-times" style="color: var(--ap-orange);"></i> <span><strong>Quotation for
+                                Equipment</strong> - Upload required</span></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Save for Later</button>
+                <button class="btn btn-primary"><i class="fas fa-paper-plane"></i> Start Application</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        <p><strong>🎯 DEMO MODE:</strong> Explore the scheme discovery experience. Data shown is for demonstration
+            purposes.</p>
+        <a href="index.html" class="btn btn-accent" style="padding: 10px 20px; font-size: 13px;">
+            <i class="fas fa-arrow-left"></i> Back to Showcase
+        </a>
+    </div>
+
+    <script>
+        // Filter tags
+        document.querySelectorAll('.filter-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+            });
+        });
+
+        // Modal
+        function openModal() {
+            document.getElementById('schemeModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('schemeModal').classList.remove('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('schemeModal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                closeModal();
+            }
+        });
+
+        // Search functionality (demo)
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            console.log('Searching for:', e.target.value);
+        });
+    </script>
+</body>
+
+</html>
