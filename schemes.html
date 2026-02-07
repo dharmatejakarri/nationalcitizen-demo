@@ -585,7 +585,7 @@
             <!-- Schemes Grid -->
             <div class="schemes-grid">
                 <!-- Scheme 1 -->
-                <div class="scheme-card">
+                <div class="scheme-card" data-category="Entrepreneur">
                     <div class="scheme-card-top">
                         <div class="scheme-card-header">
                             <div class="scheme-card-icon cat-entrepreneur">
@@ -630,7 +630,7 @@
                 </div>
 
                 <!-- Scheme 2 -->
-                <div class="scheme-card">
+                <div class="scheme-card" data-category="Entrepreneur">
                     <div class="scheme-card-top">
                         <div class="scheme-card-header">
                             <div class="scheme-card-icon cat-entrepreneur">
@@ -669,12 +669,13 @@
                     </div>
                     <div class="scheme-card-footer">
                         <span class="scheme-docs"><i class="fas fa-check-circle"></i> 6/8 docs ready</span>
-                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply Now</button>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;"
+                            onclick="openModal()">Apply Now</button>
                     </div>
                 </div>
 
                 <!-- Scheme 3 -->
-                <div class="scheme-card">
+                <div class="scheme-card" data-category="Education">
                     <div class="scheme-card-top">
                         <div class="scheme-card-header">
                             <div class="scheme-card-icon cat-education">
@@ -713,12 +714,13 @@
                     </div>
                     <div class="scheme-card-footer">
                         <span class="scheme-docs"><i class="fas fa-check-circle"></i> 4/6 docs ready</span>
-                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply Now</button>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;"
+                            onclick="openModal()">Apply Now</button>
                     </div>
                 </div>
 
                 <!-- Scheme 4 -->
-                <div class="scheme-card">
+                <div class="scheme-card" data-category="Housing">
                     <div class="scheme-card-top">
                         <div class="scheme-card-header">
                             <div class="scheme-card-icon cat-housing">
@@ -758,7 +760,8 @@
                     <div class="scheme-card-footer">
                         <span class="scheme-docs"><i class="fas fa-times-circle" style="color: var(--ap-orange);"></i>
                             3/8 docs ready</span>
-                        <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 13px;">View
+                        <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 13px;"
+                            onclick="openModal()">View
                             Details</button>
                     </div>
                 </div>
@@ -803,97 +806,192 @@
                     </div>
                     <div class="scheme-card-footer">
                         <span class="scheme-docs"><i class="fas fa-check-circle"></i> All docs ready</span>
-                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply Now</button>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;"
+                            onclick="openModal()">Apply Now</button>
                     </div>
                 </div>
 
-                <!-- Scheme 6 -->
-                <div class="scheme-card">
+                <!-- Scheme 6: Jagananna Vidya Deevena -->
+                <div class="scheme-card" data-category="Education">
                     <div class="scheme-card-top">
                         <div class="scheme-card-header">
-                            <div class="scheme-card-icon cat-pension">
-                                <i class="fas fa-piggy-bank"></i>
+                            <div class="scheme-card-icon cat-education">
+                                <i class="fas fa-book-reader"></i>
                             </div>
                             <div>
-                                <h4 class="scheme-card-title">Atal Pension Yojana</h4>
-                                <p class="scheme-card-ministry">PFRDA • Central Government</p>
+                                <h4 class="scheme-card-title">Jagananna Vidya Deevena</h4>
+                                <p class="scheme-card-ministry">Higher Education • AP Government</p>
                             </div>
                         </div>
                         <div class="scheme-match-bar">
                             <div class="scheme-match-header">
                                 <span class="scheme-match-label">Eligibility Match</span>
-                                <span class="scheme-match-value high">94%</span>
+                                <span class="scheme-match-value high">98%</span>
                             </div>
                             <div class="match-progress">
-                                <div class="match-progress-fill high" style="width: 94%;"></div>
+                                <div class="match-progress-fill high" style="width: 98%;"></div>
                             </div>
                         </div>
-                        <p class="scheme-card-desc">Guaranteed pension of ₹1,000 to ₹5,000 per month after 60 years for
-                            unorganized sector workers.</p>
+                        <p class="scheme-card-desc">Complete fee reimbursement for students from low-income families
+                            pursuing higher education (ITI, Polytechnic, Degree, Engineering).</p>
                     </div>
                     <div class="scheme-card-meta">
                         <div class="scheme-meta-item">
-                            <div class="scheme-meta-value benefit">₹5K/mo</div>
-                            <div class="scheme-meta-label">Max Pension</div>
+                            <div class="scheme-meta-value benefit">100%</div>
+                            <div class="scheme-meta-label">Fee Refund</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">15 days</div>
+                            <div class="scheme-meta-label">Deadline</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">94%</div>
+                            <div class="scheme-meta-label">Approval Rate</div>
+                        </div>
+                    </div>
+                    <div class="scheme-card-footer">
+                        <span class="scheme-docs"><i class="fas fa-check-circle"></i> 7/7 docs ready</span>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;"
+                            onclick="openModal()">Apply Now</button>
+                    </div>
+                </div>
+
+                <!-- Scheme 7: YSR Rythu Bharosa -->
+                <div class="scheme-card" data-category="Agriculture">
+                    <div class="scheme-card-top">
+                        <div class="scheme-card-header">
+                            <div class="scheme-card-icon cat-agriculture">
+                                <i class="fas fa-tractor"></i>
+                            </div>
+                            <div>
+                                <h4 class="scheme-card-title">YSR Rythu Bharosa</h4>
+                                <p class="scheme-card-ministry">Agriculture Department • AP Government</p>
+                            </div>
+                        </div>
+                        <div class="scheme-match-bar">
+                            <div class="scheme-match-header">
+                                <span class="scheme-match-label">Eligibility Match</span>
+                                <span class="scheme-match-value medium">65%</span>
+                            </div>
+                            <div class="match-progress">
+                                <div class="match-progress-fill medium" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        <p class="scheme-card-desc">Financial assistance to farmer families, including tenant farmers,
+                            for meet the investment requirements for agriculture.</p>
+                    </div>
+                    <div class="scheme-card-meta">
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value benefit">₹13.5K</div>
+                            <div class="scheme-meta-label">Per Year</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">Open</div>
+                            <div class="scheme-meta-label">Kharif</div>
+                        </div>
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value">88%</div>
+                            <div class="scheme-meta-label">Coverage</div>
+                        </div>
+                    </div>
+                    <div class="scheme-card-footer">
+                        <span class="scheme-docs"><i class="fas fa-info-circle"></i> Profile update req.</span>
+                        <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 13px;"
+                            onclick="alert('Please update your land records in Profile to check final eligibility.')">View
+                            Detail</button>
+                    </div>
+                </div>
+
+                <!-- Scheme 8: Stand-Up India -->
+                <div class="scheme-card" data-category="Entrepreneur">
+                    <div class="scheme-card-top">
+                        <div class="scheme-card-header">
+                            <div class="scheme-card-icon cat-entrepreneur">
+                                <i class="fas fa-arrow-up-right-dots"></i>
+                            </div>
+                            <div>
+                                <h4 class="scheme-card-title">Stand-Up India Scheme</h4>
+                                <p class="scheme-card-ministry">Ministry of Finance • SIDBI</p>
+                            </div>
+                        </div>
+                        <div class="scheme-match-bar">
+                            <div class="scheme-match-header">
+                                <span class="scheme-match-label">Eligibility Match</span>
+                                <span class="scheme-match-value high">91%</span>
+                            </div>
+                            <div class="match-progress">
+                                <div class="match-progress-fill high" style="width: 91%;"></div>
+                            </div>
+                        </div>
+                        <p class="scheme-card-desc">Bank loans between ₹10 lakhs and ₹1 crore to at least one SC or ST
+                            borrower and one woman borrower per bank branch.</p>
+                    </div>
+                    <div class="scheme-card-meta">
+                        <div class="scheme-meta-item">
+                            <div class="scheme-meta-value benefit">₹1Cr</div>
+                            <div class="scheme-meta-label">Max Loan</div>
                         </div>
                         <div class="scheme-meta-item">
                             <div class="scheme-meta-value">Open</div>
                             <div class="scheme-meta-label">Always</div>
                         </div>
                         <div class="scheme-meta-item">
-                            <div class="scheme-meta-value">95%</div>
+                            <div class="scheme-meta-value">62%</div>
                             <div class="scheme-meta-label">Approval Rate</div>
                         </div>
                     </div>
                     <div class="scheme-card-footer">
-                        <span class="scheme-docs"><i class="fas fa-check-circle"></i> All docs ready</span>
-                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Enroll Now</button>
+                        <span class="scheme-docs"><i class="fas fa-check-circle"></i> 6/8 docs ready</span>
+                        <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;"
+                            onclick="openModal()">Apply Now</button>
                     </div>
                 </div>
             </div>
-
-            <!-- Load More -->
-            <div class="text-center mt-8" style="padding-bottom: 80px;">
-                <button class="btn btn-secondary btn-lg">
-                    <i class="fas fa-plus"></i> Load More Schemes (41 remaining)
-                </button>
-            </div>
         </div>
+
+        <!-- Load More -->
+        <div class="text-center mt-8" style="padding-bottom: 80px; text-align: center; margin-top: 40px;">
+            <button class="btn btn-secondary btn-lg"
+                onclick="alert('Demo Mode: Loading more schemes is disabled. Currently showing top 8 matches for your profile.')">
+                <i class="fas fa-plus"></i> Load More Schemes (41 remaining)
+            </button>
+        </div>
+    </div>
     </div>
 
     <!-- Scheme Detail Modal -->
     <div class="modal-overlay" id="schemeModal">
         <div class="modal">
             <div class="modal-header">
-                <h3><i class="fas fa-rocket text-orange"></i> Pradhan Mantri Mudra Yojana</h3>
+                <h3 id="modalTitle"><i class="fas fa-rocket text-orange"></i> Pradhan Mantri Mudra Yojana</h3>
                 <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
                     <div>
-                        <span class="badge badge-orange">Entrepreneurship</span>
-                        <span class="badge badge-success" style="margin-left: 8px;">95% Match</span>
+                        <span class="badge badge-orange" id="modalCategory">Entrepreneurship</span>
+                        <span class="badge badge-success" style="margin-left: 8px;">Matched</span>
                     </div>
                     <div style="text-align: right;">
-                        <div style="font-size: 1.5rem; font-weight: 800; color: var(--ap-green);">Up to ₹10 Lakhs</div>
-                        <div style="font-size: 13px; color: var(--dark-gray);">Non-collateral loan</div>
+                        <div id="modalBenefit" style="font-size: 1.5rem; font-weight: 800; color: var(--ap-green);">Up
+                            to ₹10 Lakhs</div>
+                        <div style="font-size: 13px; color: var(--dark-gray);">Estimated Support</div>
                     </div>
                 </div>
 
                 <h5 style="margin-bottom: 12px;">About this Scheme</h5>
-                <p style="color: var(--dark-gray); margin-bottom: 24px;">
-                    MUDRA provides loans at low interest rates to micro-enterprises and individuals to help them setup
-                    or expand their business. The scheme is divided into three products based on the growth stage:
-                    Shishu (up to ₹50,000), Kishore (₹50,000 to ₹5 lakh), and Tarun (₹5 lakh to ₹10 lakh).
+                <p id="modalDesc" style="color: var(--dark-gray); margin-bottom: 24px;">
+                    This scheme provides financial assistance and support to eligible citizens. It is designed to
+                    empower individuals by providing a roadmap to success and necessary resources.
                 </p>
 
                 <h5 style="margin-bottom: 12px;">Eligibility Criteria</h5>
                 <ul class="info-list" style="margin-bottom: 24px;">
                     <li><i class="fas fa-check"></i> Age between 18-65 years</li>
-                    <li><i class="fas fa-check"></i> Indian citizen</li>
-                    <li><i class="fas fa-check"></i> Valid business plan or existing micro-enterprise</li>
+                    <li><i class="fas fa-check"></i> Indian citizen with valid ID</li>
+                    <li><i class="fas fa-check"></i> Meets specific income/category criteria</li>
                     <li><i class="fas fa-check"></i> No existing loan defaults</li>
-                    <li><i class="fas fa-check"></i> Valid KYC documents (Aadhaar, PAN)</li>
+                    <li><i class="fas fa-check"></i> Documents verified via NationalCitizen Vault</li>
                 </ul>
 
                 <h5 style="margin-bottom: 12px;">Documents Required</h5>
@@ -901,21 +999,18 @@
                     <li><i class="fas fa-check"></i> <span><strong>Aadhaar Card</strong> - Available in vault</span>
                     </li>
                     <li><i class="fas fa-check"></i> <span><strong>PAN Card</strong> - Available in vault</span></li>
-                    <li><i class="fas fa-check"></i> <span><strong>Address Proof</strong> - Available in vault</span>
+                    <li><i class="fas fa-check"></i> <span><strong>Income Proof</strong> - Available in vault</span>
                     </li>
-                    <li><i class="fas fa-check"></i> <span><strong>Bank Statement (6 months)</strong> - Available in
-                            vault</span></li>
-                    <li><i class="fas fa-check"></i> <span><strong>Passport Photo</strong> - Available in vault</span>
+                    <li><i class="fas fa-check"></i> <span><strong>Residence Proof</strong> - Available in vault</span>
                     </li>
-                    <li><i class="fas fa-times" style="color: var(--ap-orange);"></i> <span><strong>Business
-                                Plan</strong> - Upload required</span></li>
-                    <li><i class="fas fa-times" style="color: var(--ap-orange);"></i> <span><strong>Quotation for
-                                Equipment</strong> - Upload required</span></li>
+                    <li><i class="fas fa-times" style="color: var(--ap-orange);"></i> <span><strong>Scheme Specific
+                                Application</strong> - To be filled</span></li>
                 </ul>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" onclick="closeModal()">Save for Later</button>
-                <button class="btn btn-primary"><i class="fas fa-paper-plane"></i> Start Application</button>
+                <button class="btn btn-primary" onclick="startApplication()"><i class="fas fa-paper-plane"></i> Start
+                    Application</button>
             </div>
         </div>
     </div>
@@ -930,15 +1025,7 @@
     </div>
 
     <script>
-        // Filter tags
-        document.querySelectorAll('.filter-tag').forEach(tag => {
-            tag.addEventListener('click', () => {
-                document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-            });
-        });
-
-        // Modal
+        // Modal logic
         function openModal() {
             document.getElementById('schemeModal').classList.add('active');
         }
@@ -947,16 +1034,56 @@
             document.getElementById('schemeModal').classList.remove('active');
         }
 
+        function startApplication() {
+            alert('Application started! Your data has been pre-filled from your profile vault.');
+            closeModal();
+        }
+
+        // Search and Filter Logic
+        const searchInput = document.getElementById('searchInput');
+        const filterTags = document.querySelectorAll('.filter-tag');
+        const schemeCards = document.querySelectorAll('.scheme-card');
+        let activeCategory = 'All';
+
+        function filterSchemes() {
+            const searchTerm = searchInput.value.toLowerCase();
+            let count = 0;
+
+            schemeCards.forEach(card => {
+                const title = card.querySelector('.scheme-card-title').textContent.toLowerCase();
+                const ministry = card.querySelector('.scheme-card-ministry').textContent.toLowerCase();
+                const category = card.getAttribute('data-category');
+
+                const matchesSearch = title.includes(searchTerm) || ministry.includes(searchTerm);
+                const matchesCategory = activeCategory === 'All' || category === activeCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'block';
+                    count++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            document.querySelector('.results-count').innerHTML = `Showing <strong>${count} schemes</strong> matching your profile`;
+        }
+
+        searchInput.addEventListener('input', filterSchemes);
+
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                filterTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                activeCategory = tag.textContent;
+                filterSchemes();
+            });
+        });
+
         // Close modal on overlay click
         document.getElementById('schemeModal').addEventListener('click', (e) => {
             if (e.target.classList.contains('modal-overlay')) {
                 closeModal();
             }
-        });
-
-        // Search functionality (demo)
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            console.log('Searching for:', e.target.value);
         });
     </script>
 </body>

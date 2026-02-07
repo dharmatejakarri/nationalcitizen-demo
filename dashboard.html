@@ -709,43 +709,43 @@
 
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="active">
+                    <a href="dashboard.html" class="active">
                         <i class="fas fa-home"></i>
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="schemes.html">
                         <i class="fas fa-search"></i>
                         Discover Schemes
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="schemes.html">
                         <i class="fas fa-file-alt"></i>
                         My Applications
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="#" onclick="alert('Document Vault demo is coming soon!')">
                         <i class="fas fa-folder-open"></i>
                         Document Vault
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="#" onclick="alert('Mentors matching demo is coming soon!')">
                         <i class="fas fa-users"></i>
                         Find Mentors
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="#" onclick="alert('Notifications Center demo is coming soon!')">
                         <i class="fas fa-bell"></i>
                         Notifications
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#">
+                    <a href="#" onclick="alert('Settings demo is coming soon!')">
                         <i class="fas fa-cog"></i>
                         Settings
                     </a>
@@ -776,10 +776,11 @@
                     <p class="text-muted" style="margin: 0;">Here's your personalized government services dashboard</p>
                 </div>
                 <div class="topbar-actions">
-                    <button class="notification-btn">
+                    <button class="notification-btn"
+                        onclick="alert('You have 3 new notifications related to your Skill Development Grant.')">
                         <i class="fas fa-bell"></i>
                     </button>
-                    <a href="#" class="btn btn-primary">
+                    <a href="schemes.html" class="btn btn-primary">
                         <i class="fas fa-plus"></i>
                         Apply to Scheme
                     </a>
@@ -970,6 +971,15 @@
                             </div>
 
                             <div class="application-item">
+                                <div class="application-status review"></div>
+                                <div class="application-content">
+                                    <div class="application-title">Jagananna Vidya Deevena</div>
+                                    <div class="application-meta">Applied on Feb 5, 2026 • Education Support</div>
+                                </div>
+                                <span class="application-badge review">Verifying Profile</span>
+                            </div>
+
+                            <div class="application-item">
                                 <div class="application-status pending"></div>
                                 <div class="application-content">
                                     <div class="application-title">National Scholarship Portal</div>
@@ -1041,6 +1051,28 @@
                                     <i class="fas fa-check-circle"></i>
                                 </div>
                                 <div class="notification-content">
+                                    <h5>Verification Successful</h5>
+                                    <p>Your self-declared Income Certificate has been verified.</p>
+                                    <div class="notification-time">5 hours ago</div>
+                                </div>
+                            </div>
+
+                            <div class="notification-item">
+                                <div class="notification-icon info">
+                                    <i class="fas fa-comment-dots"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <h5>New Message from Mentor</h5>
+                                    <p>Priya Sharma: "Let's discuss your MUDRA application."</p>
+                                    <div class="notification-time">Yesterday</div>
+                                </div>
+                            </div>
+
+                            <div class="notification-item">
+                                <div class="notification-icon success">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="notification-content">
                                     <h5>Application Approved</h5>
                                     <p>Your Skill India Certificate is ready</p>
                                     <div class="notification-time">1 day ago</div>
@@ -1092,14 +1124,17 @@
                             <h3><i class="fas fa-bolt text-gold"></i> Quick Actions</h3>
                         </div>
                         <div class="dashboard-card-body" style="display: grid; gap: 12px;">
-                            <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;">
-                                <i class="fas fa-id-card"></i> Update Aadhaar Details
+                            <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;"
+                                onclick="alert('Profile Update: Your bio-records are up to date via NationalCitizen Hub.')">
+                                <i class="fas fa-id-card"></i> Update Profile Details
                             </button>
-                            <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;">
-                                <i class="fas fa-upload"></i> Upload Documents
+                            <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;"
+                                onclick="alert('Document Vault: 12 documents are securely stored. Open Vault?')">
+                                <i class="fas fa-upload"></i> Manage Documents
                             </button>
-                            <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;">
-                                <i class="fas fa-calculator"></i> Check Pension Eligibility
+                            <button class="btn btn-secondary" style="justify-content: flex-start; padding: 14px 20px;"
+                                onclick="alert('Calculator: Based on current trends, your estimated pension is ₹3,200/mo.')">
+                                <i class="fas fa-calculator"></i> Pension Estimator
                             </button>
                         </div>
                     </div>
