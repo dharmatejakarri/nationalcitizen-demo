@@ -1,0 +1,162 @@
+/* Persona Switcher Styles */
+
+.persona-fab {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #fdd600 0%, #ffc107 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a0a0a;
+    font-size: 24px;
+    box-shadow: 0 8px 32px rgba(253, 214, 0, 0.4);
+    cursor: pointer;
+    z-index: 2000;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+}
+
+.persona-fab:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 40px rgba(253, 214, 0, 0.5);
+}
+
+.persona-fab i {
+    pointer-events: none;
+}
+
+.persona-fab::after {
+    content: 'Switch Persona';
+    position: absolute;
+    right: 80px;
+    background: #0a0a0a;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.persona-fab:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Persona Modal */
+.persona-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 18, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.persona-modal.active {
+    display: flex;
+}
+
+.persona-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .persona-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .persona-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.persona-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.persona-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fdd600;
+    transform: translateY(-8px);
+}
+
+.persona-option.active {
+    background: rgba(253, 214, 0, 0.1);
+    border-color: #fdd600;
+    box-shadow: 0 0 30px rgba(253, 214, 0, 0.15);
+}
+
+.persona-item-avatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #1d307f 0%, #ff4500 100%);
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: white;
+}
+
+.persona-option.active .persona-item-avatar {
+    background: linear-gradient(135deg, #fdd600 0%, #ffc107 100%);
+    color: #0a0a0a;
+}
+
+.persona-option h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.persona-option p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    margin: 0;
+}
+
+.close-persona-modal {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.close-persona-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
