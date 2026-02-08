@@ -1421,20 +1421,8 @@
 
                 <!-- Section: Notifications -->
                 <section id="section-notifications" class="spa-section">
-                    <div class="notifications-list">
-                        <div class="notification-full-item unread">
-                            <div class="notification-img type-critical">
-                                <i class="fas fa-exclamation-triangle"></i>
-                            </div>
-                            <div class="notification-main">
-                                <span class="notif-time">2 hours ago • URGENT</span>
-                                <h4>Deadline Approaching: AICTE Skill Grant</h4>
-                                <p>The application window for the AICTE 2026 Skill Development Grant closes in 30 days.
-                                </p>
-                                <button class="btn btn-primary" style="font-size: 13px; padding: 10px 20px;"
-                                    onclick="showSection('applications')">Complete Now</button>
-                            </div>
-                        </div>
+                    <div class="notifications-list" id="full-notifications-list">
+                        <!-- Populated by JS -->
                     </div>
                 </section>
 
@@ -1450,11 +1438,13 @@
                                 <h3>Personal Information</h3>
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" class="form-control" value="Karri Dharma Teja" readonly>
+                                    <input type="text" class="form-control" id="settings-full-name"
+                                        value="Karri Dharma Teja" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Primary Email</label>
-                                    <input type="email" class="form-control" value="dharmateja@example.com">
+                                    <input type="email" class="form-control" id="settings-email"
+                                        value="dharmateja@example.com">
                                 </div>
                                 <button class="btn btn-primary" onclick="alert('Settings saved!')">Save Changes</button>
                             </div>
@@ -1636,14 +1626,12 @@
             }
 
             // Notifications
-            const notificationsList = document.querySelector('.dashboard-card-body[style*="padding: 16px"]');
-            if (notificationsList && p.notifications) {
-                notificationsList.innerHTML = '';
-                p.notifications.forEach(n => {
-                    const item = document.createElement('div');
-                    item.className = 'notification-item';
-                    item.style = 'cursor: pointer;';
-                    item.innerHTML = `
+            const shortList = document.querySelector('.dashboard-card-body[style*="padding: 16px"]');
+            const fullList = document.getElementById('full-notifications-list');
+
+            if (p.notifications) {
+                const notificationsHTML = p.notifications.map(n => `
+                    <div class="notification-item" style="cursor: pointer;">
                         <div class="notification-icon ${n.type}">
                             <i class="fas ${n.icon}"></i>
                         </div>
@@ -1652,10 +1640,44 @@
                             <p>${n.desc}</p>
                             <div class="notification-time">${n.time}</div>
                         </div>
-                    `;
-                    notificationsList.appendChild(item);
-                });
+                    </div>
+                `).join('');
+
+                if (shortList) shortList.innerHTML = notificationsHTML;
+
+                if (fullList) {
+                    fullList.innerHTML = p.notifications.map(n => `
+                        <div class="notification-full-item ${n.type === 'deadline' ? 'unread' : ''}">
+                            <div class="notification-img type-${n.type === 'deadline' ? 'critical' : 'success'}">
+                                <i class="fas ${n.icon}"></i>
+                            </div>
+                            <div class="notification-main">
+                                <span class="notif-time">${n.time}</span>
+                                <h4>${n.title}</h4>
+                                <p>${n.desc}</p>
+                                <button class="btn btn-primary" style="font-size: 13px; padding: 10px 20px;"
+                                    onclick="alert('Processing ${n.title}...')">Take Action</button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
             }
+
+            // Settings
+            const settingsName = document.getElementById('settings-full-name');
+            const settingsEmail = document.getElementById('settings-email');
+            if (settingsName) settingsName.value = p.name;
+            if (settingsEmail) settingsEmail.value = p.name.toLowerCase().replace(' ', '.') + "@citizen.ap.gov.in";
+
+            // Update Topbar if currently on dashboard
+            const welcomeSubtitle = document.getElementById('welcome-subtitle');
+            if (welcomeSubtitle && welcomeSubtitle.innerText.includes("personalized government services")) {
+                welcomeSubtitle.innerText = `Here's your personalized dashboard as a ${p.role}`;
+            }
+
+            // Update Demo Banner
+            const demoName = document.getElementById('demo-persona-name');
+            if (demoName) demoName.innerText = p.name;
         }
 
         function updateTopbar(sectionId) {
