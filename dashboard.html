@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/dashboard.css">
+    <script src="js/personas.js"></script>
     <style>
         body {
             background: var(--light-gray);
@@ -600,11 +601,11 @@
                     style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: rgba(255,255,255,0.6); font-size: 14px; text-decoration: none;">
                     <i class="fas fa-arrow-left"></i> <span>Back to Showcase</span>
                 </a>
-                <div class="user-card">
-                    <div class="user-avatar">DT</div>
+                <div class="user-card" id="user-card-sidebar">
+                    <div class="user-avatar" id="user-avatar-sidebar">DT</div>
                     <div class="user-info">
-                        <h5>Dharma Teja</h5>
-                        <p>Young Professional • 26 yrs</p>
+                        <h5 id="user-name-sidebar">Dharma Teja</h5>
+                        <p id="user-role-sidebar">Young Professional • 26 yrs</p>
                     </div>
                 </div>
             </div>
@@ -615,8 +616,9 @@
             <!-- Top Bar -->
             <div class="topbar">
                 <div id="topbar-content">
-                    <h1>Welcome back, Dharma! 👋</h1>
-                    <p class="text-muted" style="margin: 0;">Here's your personalized government services dashboard</p>
+                    <h1 id="welcome-message">Welcome back, Dharma! 👋</h1>
+                    <p class="text-muted" id="welcome-subtitle" style="margin: 0;">Here's your personalized government
+                        services dashboard</p>
                 </div>
                 <div class="topbar-actions">
                     <button class="notification-btn" onclick="showSection('notifications')">
@@ -642,7 +644,7 @@
                                 </div>
                                 <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 12</span>
                             </div>
-                            <div class="stat-card-value">47</div>
+                            <div class="stat-card-value" id="stat-schemes-count">47</div>
                             <div class="stat-card-label">Eligible Schemes</div>
                         </div>
 
@@ -652,7 +654,7 @@
                                     <i class="fas fa-clock"></i>
                                 </div>
                             </div>
-                            <div class="stat-card-value">3</div>
+                            <div class="stat-card-value" id="stat-active-apps">3</div>
                             <div class="stat-card-label">Active Applications</div>
                         </div>
 
@@ -662,7 +664,7 @@
                                     <i class="fas fa-rupee-sign"></i>
                                 </div>
                             </div>
-                            <div class="stat-card-value">₹1,85,000</div>
+                            <div class="stat-card-value" id="stat-benefits">₹1,85,000</div>
                             <div class="stat-card-label">Benefits Received (Lifetime)</div>
                         </div>
 
@@ -672,7 +674,7 @@
                                     <i class="fas fa-star"></i>
                                 </div>
                             </div>
-                            <div class="stat-card-value">85%</div>
+                            <div class="stat-card-value" id="stat-civic-score">85%</div>
                             <div class="stat-card-label">Civic Score</div>
                         </div>
                     </div>
@@ -686,18 +688,19 @@
                                 <div class="life-stage-header">
                                     <div>
                                         <h3 style="margin: 0 0 4px;">Current Life Stage</h3>
-                                        <p style="margin: 0; opacity: 0.8; font-size: 14px;">Career & Entrepreneurship
+                                        <p id="current-lifestage-text"
+                                            style="margin: 0; opacity: 0.8; font-size: 14px;">Career & Entrepreneurship
                                             (23-30
                                             years)</p>
                                     </div>
-                                    <span class="life-stage-badge">
+                                    <span class="life-stage-badge" id="lifestage-badge">
                                         <i class="fas fa-briefcase"></i> Stage 6 of 9
                                     </span>
                                 </div>
                                 <div class="life-stage-progress">
-                                    <label>Life journey progress: 26 years old</label>
+                                    <label id="lifestage-label">Life journey progress: 26 years old</label>
                                     <div class="progress-bar-lg">
-                                        <div class="fill" style="width: 37%;"></div>
+                                        <div class="fill" id="lifestage-fill" style="width: 37%;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1489,8 +1492,166 @@
             window.scrollTo(0, 0);
 
             // Handle specific section initializations
+            // Handle specific section initializations
             if (sectionId === 'schemes' && typeof filterSchemes === 'function') {
                 filterSchemes();
+            }
+        }
+
+        /* Persona Switching Logic */
+        let activePersonaId = localStorage.getItem('activePersonaId') || 'young-professional';
+
+        function initPersonaSwitcher() {
+            const grid = document.getElementById('persona-grid');
+            if (!grid) return;
+
+            grid.innerHTML = '';
+            Object.values(window.personas).forEach(p => {
+                const opt = document.createElement('div');
+                opt.className = `persona-option ${p.id === activePersonaId ? 'active' : ''}`;
+                opt.innerHTML = `
+                    <div class="persona-item-avatar">${p.avatar}</div>
+                    <h4>${p.name}</h4>
+                    <p>${p.role}</p>
+                `;
+                opt.onclick = () => switchPersona(p.id);
+                grid.appendChild(opt);
+            });
+
+            loadPersonaData(activePersonaId);
+        }
+
+        function togglePersonaModal() {
+            document.getElementById('persona-modal').classList.toggle('active');
+        }
+
+        function switchPersona(id) {
+            activePersonaId = id;
+            localStorage.setItem('activePersonaId', id);
+
+            // Update UI selection
+            document.querySelectorAll('.persona-option').forEach(opt => opt.classList.remove('active'));
+            // Refetch or reload
+            initPersonaSwitcher();
+            togglePersonaModal();
+            loadPersonaData(id);
+
+            // Notification toast
+            const toast = document.createElement('div');
+            toast.style = "position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--ap-green); color: white; padding: 12px 24px; border-radius: 30px; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-weight: 600;";
+            toast.innerHTML = `<i class="fas fa-check-circle"></i> Switched to ${window.personas[id].name}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
+
+        function loadPersonaData(id) {
+            const p = window.personas[id];
+            if (!p) return;
+
+            // Header & Sidebar
+            const welcomeMsg = document.getElementById('welcome-message');
+            const firstName = p.name.split(' ')[0].replace('Baby', 'Baby ');
+            if (welcomeMsg) welcomeMsg.innerText = `Welcome back, ${firstName}! 👋`;
+
+            const sidebarName = document.getElementById('user-name-sidebar');
+            if (sidebarName) sidebarName.innerText = p.name;
+
+            const sidebarRole = document.getElementById('user-role-sidebar');
+            if (sidebarRole) sidebarRole.innerText = `${p.role} • ${p.age}`;
+
+            const sidebarAvatar = document.getElementById('user-avatar-sidebar');
+            if (sidebarAvatar) sidebarAvatar.innerText = p.avatar;
+
+            // Stats
+            document.getElementById('stat-schemes-count').innerText = p.stats.schemes;
+            document.getElementById('stat-active-apps').innerText = p.stats.active;
+            document.getElementById('stat-benefits').innerText = p.stats.benefits;
+            document.getElementById('stat-civic-score').innerText = p.stats.civic;
+
+            // Life Stage
+            const lifestageText = document.getElementById('current-lifestage-text');
+            if (lifestageText) lifestageText.innerText = `${p.role} (${p.age})`;
+
+            const lifestageBadge = document.getElementById('lifestage-badge');
+            if (lifestageBadge) lifestageBadge.innerHTML = `<i class="fas fa-user"></i> Stage ${p.stage} of 9`;
+
+            const lifestageLabel = document.getElementById('lifestage-label');
+            if (lifestageLabel) lifestageLabel.innerText = `Life journey progress: ${p.age} years old`;
+
+            const lifestageFill = document.getElementById('lifestage-fill');
+            if (lifestageFill) lifestageFill.style.width = `${p.progress}%`;
+
+            // Recommended Schemes
+            const schemesList = document.getElementById('recommended-schemes-list');
+            if (schemesList) {
+                schemesList.innerHTML = '';
+                p.schemes.slice(0, 4).forEach(s => {
+                    const item = document.createElement('div');
+                    item.className = 'scheme-item';
+                    item.innerHTML = `
+                        <div class="scheme-icon" style="background: rgba(var(--icon-bg), 0.1); color: var(--icon-color);">
+                            <i class="fas ${s.icon}"></i>
+                        </div>
+                        <div class="scheme-content">
+                            <div class="scheme-title">${s.title}</div>
+                            <div class="scheme-meta">
+                                <span class="scheme-match high"><i class="fas fa-check-circle"></i> ${s.match}% Match</span>
+                                <span>•</span>
+                                <span class="scheme-benefit">${s.impact}</span>
+                                <span>•</span>
+                                <span><i class="fas fa-clock"></i> ${s.deadline}</span>
+                            </div>
+                        </div>
+                        <div class="scheme-actions">
+                            <button class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">Apply Now</button>
+                        </div>
+                    `;
+                    // Simple dynamic coloring logic
+                    let bg = "255, 69, 0"; // Default orange
+                    if (s.cat === "Education") bg = "29, 48, 127";
+                    if (s.cat === "Health") bg = "3, 109, 51";
+                    item.querySelector('.scheme-icon').style.backgroundColor = `rgba(${bg}, 0.1)`;
+                    item.querySelector('.scheme-icon').style.color = `rgb(${bg})`;
+                    schemesList.appendChild(item);
+                });
+            }
+
+            // Mentors
+            const mentorCard = document.querySelector('.mentor-card');
+            if (mentorCard && p.mentors && p.mentors[0]) {
+                const m = p.mentors[0];
+                mentorCard.innerHTML = `
+                    <div class="mentor-avatar">${m.avatar}</div>
+                    <div class="mentor-info">
+                        <div class="mentor-name">${m.name}</div>
+                        <div class="mentor-domain">${m.domain}</div>
+                        <div class="mentor-rating">
+                            <i class="fas fa-star"></i> ${m.rating} (Verified)
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Notifications
+            const notificationsList = document.querySelector('.dashboard-card-body[style*="padding: 16px"]');
+            if (notificationsList && p.notifications) {
+                notificationsList.innerHTML = '';
+                p.notifications.forEach(n => {
+                    const item = document.createElement('div');
+                    item.className = 'notification-item';
+                    item.style = 'cursor: pointer;';
+                    item.innerHTML = `
+                        <div class="notification-icon ${n.type}">
+                            <i class="fas ${n.icon}"></i>
+                        </div>
+                        <div class="notification-content">
+                            <h5>${n.title}</h5>
+                            <p>${n.desc}</p>
+                            <div class="notification-time">${n.time}</div>
+                        </div>
+                    `;
+                    notificationsList.appendChild(item);
+                });
             }
         }
 
@@ -1531,12 +1692,15 @@
             }
 
             if (topbar) {
-                topbar.innerHTML = `<h1>${title}</h1><p class="text-muted" style="margin: 0;">${subtitle}</p>`;
+                topbar.innerHTML = `<h1 id="welcome-message">${title}</h1><p class="text-muted" id="welcome-subtitle" style="margin: 0;">${subtitle}</p>`;
+                // Re-apply persona name if on dashboard
+                if (sectionId === 'dashboard') loadPersonaData(activePersonaId);
             }
         }
 
         // Handle direct linking to sections if needed
         window.addEventListener('load', () => {
+            initPersonaSwitcher();
             const hash = window.location.hash.replace('#', '');
             if (hash && ['dashboard', 'schemes', 'applications', 'vault', 'mentors', 'notifications', 'settings'].includes(hash)) {
                 showSection(hash);
@@ -1544,12 +1708,26 @@
         });
     </script>
 
+    <!-- Persona Switcher Components -->
+    <button class="persona-fab" onclick="togglePersonaModal()">
+        <i class="fas fa-users-rays"></i>
+    </button>
+
+    <div class="persona-modal" id="persona-modal">
+        <button class="close-persona-modal" onclick="togglePersonaModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="persona-grid" id="persona-grid">
+            <!-- Personas populated via JS -->
+        </div>
+    </div>
+
     <!-- Demo Banner -->
     <div class="demo-banner">
-        <p><strong>🎯 DEMO MODE:</strong> This is a simulation of the NationalCitizen platform. Data shown is for
-            demonstration purposes.</p>
+        <p><strong>🎯 DEMO MODE:</strong> This is a simulation for <span id="demo-persona-name">Dharma Teja</span>.
+            Select another persona using the bottom-right button.</p>
         <a href="index.html" class="btn btn-accent" style="padding: 10px 20px; font-size: 13px;">
-            <i class="fas fa-arrow-left"></i> Back to Investor Showcase
+            <i class="fas fa-arrow-left"></i> Back to Showcase
         </a>
     </div>
 </body>
